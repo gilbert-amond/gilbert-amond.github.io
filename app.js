@@ -8,6 +8,85 @@ let selectedProduct = null;
 let selectedPay = null;
 let rtInterval = null;
 let activeProfileTab = "profile";
+const TEST_ACCOUNT = {
+  email: "reviewer@storyhub.app",
+  password: "StoryHub!2026",
+  name: "PG Tester"
+};
+const HEAVENLY_RAW = [
+  {
+    id: 1111,
+    title: "여군동 : 되돌린 운명",
+    openAt: "2026-05-07T05:00:00Z",
+    ratingSystem: "PG18",
+    image: "https://image.heavenly.tv/content/ko/15016056177310822577-20260511003641.jpg",
+    description: "흥조의 5 황자 은기는 절친한 벗이었던 탑이한의 왕자 배연지의 배신으로 죽음을 맞이하지만, 3년 전 변방으로 떠나기 전으로 회귀한다. 은기는 전생의 비극을 되풀이하지 않기 위해 배연지를 경계하지만, 자신에게 다정한 그에게 자꾸만 흔들리는데….",
+  },
+  {
+    id: 1112,
+    title: "시선 : 내가 너를 바라볼 때",
+    openAt: "2026-05-07T05:00:00Z",
+    ratingSystem: "PG18",
+    image: "https://image.heavenly.tv/content/ko/9289376324815718378-20260511003627.jpg",
+    description: "재활치료사 리유언은 아픈 동생 리유쓰의 치료비를 마련하기 위해 고군분투하던 중, 테니스 클럽팀 주치의 면접을 계기로 테니스 선수 자이추위와 만나게 된다. 자이추위는 리유언에게 거액의 조건을 내걸며 은밀한 전담 재활치료사 계약을 제안하고 리유언은 현실과 원칙 사이에서 갈등하는데….",
+  },
+  {
+    id: 1104,
+    title: "Flower Boy : 향기에 홀린 소년",
+    openAt: "2026-04-22T03:00:00Z",
+    ratingSystem: "PG18",
+    image: "https://image.heavenly.tv/content/ko/3127675377108175193-20260427030106.jpg",
+    description: "냉혹하면서도 자유로운 CEO가 무너져가는 회사를 구하기 위해, 희귀한 ‘꽃 부족’ 출신의 아름다운 청년을 붙잡아 혁신적인 향수를 만들려 한다. 하지만 그가 풍기는 향기는 진정한 사랑의 순간에만 가장 강렬하게 피어난다. 이 비밀을 이용하기로 결심한 CEO는 그 청년의 마음을 훔치기 위해 음모를 꾸미지만, 그 뒤에는 한 가지의 진실이 숨겨져 있는데...",
+  },
+  {
+    id: 1099,
+    title: "페이크 팩트 립스",
+    openAt: "2026-04-15T03:00:00Z",
+    ratingSystem: "PG18",
+    image: "https://image.heavenly.tv/content/en/4565530415751369304-20260424053637.jpg",
+    description: "이날 우리가 살아오면서 가장 멍청한 승부가 시작됐다. 고등학교 시절부터 라이벌로서 경쟁해 온 료와 젠. 직장인이 되어 같은 회사에서 재회해도, 승부욕을 계속해서 발휘한 그들은 어떠한 일을 계기로 「먼저 반하게 한 쪽이 승리」라는 물러설 수 없는 새로운 승부를 겨루게 되는데……?",
+  },
+  {
+    id: 1096,
+    title: "Fourever You Part 2",
+    openAt: "2026-04-06T03:00:00Z",
+    ratingSystem: "PG18",
+    image: "https://image.heavenly.tv/content/ko/1774050815668496237-20260414030344.jpg",
+    description: "4년 만에 우연히 다시 마주한 푼과 파. 차마 밝힐 수 없는 비밀 때문에, 푼은 파를 밀어내기 위해 모진 말만 내뱉는다. 하지만 같은 학교에서 계속 마주치는 두 사람— 자신을 숨긴 채 ‘다른 사람’이 된 것처럼 선물로 진심을 전하기 시작한다. 그 사실을 전혀 모르는 파, 두 사람의 감정은 어디로 향하게 될까?",
+  },
+  {
+    id: 1095,
+    title: "스모키 블루의 비 내린 뒤 맑음",
+    openAt: "2026-04-06T03:00:00Z",
+    ratingSystem: "PG18",
+    image: "https://image.heavenly.tv/content/en/13312822614641726346-20260406082736.jpg",
+    description: "일에 지쳐 현재는 무직인 사쿠타로와, 현재는 의료 번역가인 쿠지. 8년 전에는, 제약회사의 동기로서 MR의 영업 실적 1위를 두고 다투던 라이벌 사이로, 쿠지의 퇴사일에 단 한 번 함께 밤을 보낸 두 사람. 8년 전에 덮어둔 한 번의 관계가 갑작스러운 재회로 인해 두 사람의 인생을 움직이기 시작한다. 부모의 노화나 죽음, 일의 보람, 누군가와 살아갈 것인지, 혼자 살아갈 것인지, 나이를 먹어가기에 보이기 시작하는 세계나 감정도 있는 그대로 공유해 가는, 38세인 두 명의 삶의 방식.",
+  },
+  {
+    id: 1084,
+    title: "니적심사영재아적미간 : 나의 눈빛에 비친 너의 마음",
+    openAt: "2026-03-27T03:00:00Z",
+    ratingSystem: "PG18",
+    image: "https://image.heavenly.tv/content/en/15562135549383364530-20260511004039.jpg",
+    description: "법대 신입생인 위레이는 차갑고 까칠한 동기 천커가 영 마음에 들지 않는다. 게다가 우상인 사촌 누나 장한이 천커에게 호감을 보이자 그를 라이벌로 여기며 두 사람 사이를 방해하기 시작한다. 그러나 함께 시간을 보내며 천커를 오해했다는 걸 깨달은 위레이는 어느새 그에게 설렘을 느끼는데...",
+  },
+  {
+    id: 1081,
+    title: "Wishing Upon the Shooting Stars",
+    openAt: "2026-03-23T09:00:00Z",
+    ratingSystem: "PG18",
+    image: "https://image.heavenly.tv/content/en/15867651056823171029-20260410075819.jpg",
+    description: "도시에서 실패를 겪고 좌절한 허상융은 고향으로 돌아온 그날 밤, 유성을 보며 더는 허상융으로 살고 싶지 않다고 소원을 빈다. 그리고 다음 날, 소원이 이루어져 아무도 그를 알아보지 못하게 된다. 허상융은 친구인 리완저의 도움으로 '중샤오유'라는 새로운 신분으로 생활한다. 한편, 과거 허상융과 친구였던 천하오웨이는 중샤오유에게서 왠지 모를 낯설지만 익숙한 느낌을 받는데…",
+  },
+  {
+    id: 1073,
+    title: "네 원수를 잊지 마라",
+    openAt: "2026-03-11T03:00:00Z",
+    ratingSystem: "PG18",
+    image: "https://image.heavenly.tv/content/ko/9042791802891554916-20260504042825.jpg",
+    description: "어젯밤까지 평범한 19살이었는데, 눈 떠보니 나는 스물아홉이 되어 있었다. 게다가 평생의 원수 여새벽이 7년 동안 내 연인이었다고? 기억은 10년째 비어 있고, 정체 모를 협박 편지, 단순한 사고가 아닌 교통사고의 진실까지 드러난다. 사라진 기억과 숨겨진 집착 속에서, 잊어버린 과거를 믿을 것인가, 아니면 지금의 심장을 믿을 것인가. 철천지원수에서 연인이 된 두 남자의 달콤하고 위험한 기억상실 BL 로맨틱 코미디.",
+  }
+];
 
 // ============ I18N ============
 function t(key) { return T[LANG][key] ?? key; }
@@ -22,10 +101,10 @@ function applyI18n() {
   // Re-render dynamic content
   renderHero();
   renderScenes();
+  renderSafeLatest();
   renderQuotes();
   renderCast();
   renderReviewsPreview();
-  renderRelated();
   renderExplore();
   renderTrending("today");
   renderGenres();
@@ -81,6 +160,34 @@ function renderScenes() {
     </div>`).join("");
   document.querySelectorAll("#scenesGrid .scene-card").forEach(c =>
     c.addEventListener("click", () => openModal("trailerModal")));
+}
+
+function renderSafeLatest() {
+  const grid = document.getElementById("safeGrid");
+  if (!grid) return;
+  const list = HEAVENLY_RAW
+    .filter(item => (item.ratingSystem || "").toUpperCase() !== "PG18")
+    .sort((a, b) => new Date(b.openAt) - new Date(a.openAt));
+
+  if (!list.length) {
+    grid.innerHTML = `<div class="safe-empty">${
+      LANG === "ko"
+        ? "heavenly.tv 기준 최신 데이터는 모두 19세 이상(PG18)으로 확인되어 현재 표시 가능한 항목이 없습니다."
+        : "All latest items from heavenly.tv are marked as PG18, so no eligible items are currently available."
+    }</div>`;
+    return;
+  }
+
+  grid.innerHTML = list.map(item => `
+    <article class="safe-card">
+      <img class="safe-thumb" src="${item.image}" alt="${item.title}" loading="lazy">
+      <div class="safe-body">
+        <h3 class="safe-title">${item.title}</h3>
+        <div class="safe-meta">OPEN ${new Date(item.openAt).toISOString().slice(0, 10)} · ${item.ratingSystem}</div>
+        <p class="safe-desc">${item.description}</p>
+      </div>
+    </article>
+  `).join("");
 }
 
 function renderQuotes() {
@@ -171,7 +278,7 @@ function filterExplore(genre) {
   const list = genre === "All" ? EXPLORE_CONTENT : EXPLORE_CONTENT.filter(c => tx(c.genre) === genre);
   document.getElementById("exploreGrid").innerHTML = list.map(c => `
     <div class="grid-card" onclick="goToContent()">
-      <div class="grid-thumb" style="background:${c.color}">
+      <div class="grid-thumb" style="${c.poster ? `background-image:url('${c.poster}'); background-size:cover; background-position:center;` : `background:${c.color}` }">
         <div class="related-rating">★ ${c.rating}</div>
       </div>
       <div class="grid-title">${tx(c.title)}</div>
@@ -401,13 +508,16 @@ function setAuthTab(tab) {
   const body = document.getElementById("authBody");
   if (tab === "login") {
     body.innerHTML = `
-      <input type="email" placeholder="${LANG==="ko"?"이메일":"Email"}">
-      <input type="password" placeholder="${LANG==="ko"?"비밀번호":"Password"}">
+      <input type="email" id="loginEmail" placeholder="${LANG==="ko"?"이메일":"Email"}" value="${TEST_ACCOUNT.email}">
+      <input type="password" id="loginPassword" placeholder="${LANG==="ko"?"비밀번호":"Password"}">
       <button class="btn-primary full" onclick="doLogin()">${t("btn_login")}</button>
+      <p class="legal">${LANG==="ko"
+        ? `테스트 계정: ${TEST_ACCOUNT.email} / ${TEST_ACCOUNT.password}`
+        : `Test account: ${TEST_ACCOUNT.email} / ${TEST_ACCOUNT.password}`}</p>
       <div class="social-row">
-        <button class="social" onclick="doLogin()">G  Google</button>
-        <button class="social" onclick="doLogin()">  Apple</button>
-        <button class="social" onclick="doLogin()">K  Kakao</button>
+        <button class="social" onclick="toast(LANG==='ko' ? '테스트 계정 로그인을 사용해 주세요' : 'Use test account login')">G  Google</button>
+        <button class="social" onclick="toast(LANG==='ko' ? '테스트 계정 로그인을 사용해 주세요' : 'Use test account login')">  Apple</button>
+        <button class="social" onclick="toast(LANG==='ko' ? '테스트 계정 로그인을 사용해 주세요' : 'Use test account login')">K  Kakao</button>
       </div>`;
   } else {
     body.innerHTML = `
@@ -420,11 +530,30 @@ function setAuthTab(tab) {
 }
 
 function doLogin() {
+  const emailInput = document.getElementById("loginEmail");
+  const pwInput = document.getElementById("loginPassword");
+  if (emailInput && pwInput) {
+    const email = emailInput.value.trim().toLowerCase();
+    const password = pwInput.value;
+    const isValid = email === TEST_ACCOUNT.email.toLowerCase() && password === TEST_ACCOUNT.password;
+    if (!isValid) {
+      toast(LANG==="ko" ? "테스트 계정 정보가 일치하지 않습니다." : "Invalid test account credentials.");
+      return;
+    }
+  }
+
   isLoggedIn = true;
   closeModal("authModal");
   document.getElementById("btnLogin").classList.add("hidden");
   document.getElementById("btnSignup").classList.add("hidden");
   document.getElementById("profileWrap").classList.remove("hidden");
+  document.getElementById("pmName").textContent = TEST_ACCOUNT.name;
+  const pmEmail = document.querySelector(".pm-email");
+  if (pmEmail) pmEmail.textContent = TEST_ACCOUNT.email;
+  const sideName = document.querySelector(".ps-name");
+  if (sideName) sideName.textContent = TEST_ACCOUNT.name;
+  const sideEmail = document.querySelector(".ps-email");
+  if (sideEmail) sideEmail.textContent = TEST_ACCOUNT.email;
   document.getElementById("pmPoints").textContent = myPoints.toLocaleString() + " P";
   toast(LANG==="ko"?"✅ 환영합니다!":"✅ Welcome!");
   // continue watch flow if pending
@@ -440,6 +569,13 @@ function doLogout() {
   document.getElementById("btnSignup").classList.remove("hidden");
   document.getElementById("profileWrap").classList.add("hidden");
   document.getElementById("profileMenu").classList.add("hidden");
+  document.getElementById("pmName").textContent = "Guest User";
+  const pmEmail = document.querySelector(".pm-email");
+  if (pmEmail) pmEmail.textContent = "user@storyhub.app";
+  const sideName = document.querySelector(".ps-name");
+  if (sideName) sideName.textContent = "Guest User";
+  const sideEmail = document.querySelector(".ps-email");
+  if (sideEmail) sideEmail.textContent = "user@storyhub.app";
   showView("detail");
   toast(LANG==="ko"?"로그아웃되었습니다":"Signed out");
 }
@@ -522,20 +658,31 @@ function renderWatchStep() {
             <div class="pay-radio"></div>
           </div>`).join("")}
       </div>
-      <label class="agree"><input type="checkbox" id="agreeChk" checked> ${LANG==="ko"?"이용약관 및 결제대행 약관에 동의합니다":"I agree to terms and payment policies"}</label>
+      <label class="agree"><input type="checkbox" id="agreeChk"> ${LANG==="ko"?"주문 내용을 확인했으며, 아래 내용에 모두 동의합니다":"I have reviewed my order and agree to all items below."}</label>
+      <ul class="agree-detail">
+        <li>${LANG==="ko" ? "구매 조건, 결제금액, 결제수단, 주문자 정보를 확인했습니다." : "I have confirmed purchase terms, amount, payment method, and buyer details."}</li>
+        <li>${LANG==="ko" ? "디지털 콘텐츠 특성상 시청 시작 후에는 환불이 제한될 수 있음에 동의합니다." : "I understand refunds may be limited once playback starts for digital content."}</li>
+        <li>${LANG==="ko" ? "결제 진행을 위해 필요한 개인정보 제공 및 위탁에 동의합니다." : "I agree to required personal data sharing/processing for payment."}</li>
+      </ul>
       <div class="ws-actions">
         <button class="btn-secondary" onclick="watchStep=1; setStepper(1); renderWatchStep();">${LANG==="ko"?"이전":"Back"}</button>
         <button class="btn-primary" id="ws2Next" disabled>${LANG==="ko"?"₩":""}${p.price.toLocaleString()} ${LANG==="ko"?"결제하기":"Pay now"}</button>
       </div>`;
+    const agreeChk = document.getElementById("agreeChk");
+    const ws2Next = document.getElementById("ws2Next");
+    const updatePayButtonState = () => {
+      ws2Next.disabled = !(selectedPay && agreeChk.checked);
+    };
     document.querySelectorAll(".pay-card").forEach(c => {
       c.addEventListener("click", () => {
         document.querySelectorAll(".pay-card").forEach(x => x.classList.remove("selected"));
         c.classList.add("selected");
         selectedPay = PAY_METHODS.find(m => m.id === c.dataset.pid);
-        document.getElementById("ws2Next").disabled = false;
+        updatePayButtonState();
       });
     });
-    document.getElementById("ws2Next").addEventListener("click", processPay);
+    agreeChk.addEventListener("change", updatePayButtonState);
+    ws2Next.addEventListener("click", processPay);
   }
   else if (watchStep === 3) {
     const p = selectedProduct;
@@ -813,7 +960,7 @@ document.getElementById("profileMenu").classList.toggle("hidden");
     if (v === "latest") list.sort((a,b)=>b.year-a.year);
     document.getElementById("exploreGrid").innerHTML = list.map(c => `
       <div class="grid-card" onclick="goToContent()">
-        <div class="grid-thumb" style="background:${c.color}"><div class="related-rating">★ ${c.rating}</div></div>
+        <div class="grid-thumb" style="${c.poster ? `background-image:url('${c.poster}'); background-size:cover; background-position:center;` : `background:${c.color}` }"><div class="related-rating">★ ${c.rating}</div></div>
         <div class="grid-title">${tx(c.title)}</div>
         <div class="grid-meta">${tx(c.genre)} · ${c.year}</div>
       </div>`).join("");

@@ -156,6 +156,16 @@ button { font-family: inherit; }
 .row-between { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
 .synopsis { font-size: 17px; line-height: 1.9; max-width: 900px; color: rgba(255,255,255,0.88); }
 
+/* HEAVENLY SAFE LATEST */
+.safe-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.safe-card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.safe-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: var(--bg2); display: block; }
+.safe-body { padding: 14px; }
+.safe-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+.safe-meta { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+.safe-desc { color: rgba(255,255,255,0.84); font-size: 13px; line-height: 1.6; min-height: 42px; }
+.safe-empty { grid-column: 1 / -1; background: var(--card); border: 1px dashed var(--line); border-radius: 12px; padding: 18px; color: var(--muted); font-size: 13px; }
+
 /* SCENES */
 .scenes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .scene-card { aspect-ratio: 16/10; border-radius: 14px; position: relative; cursor: pointer; overflow: hidden; transition: 0.25s; }
@@ -474,6 +484,14 @@ button { font-family: inherit; }
 .pay-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--line); }
 .pay-card.selected .pay-radio { border-color: var(--accent); background: var(--accent); box-shadow: inset 0 0 0 3px var(--bg2); }
 .agree { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 12px; }
+.agree-detail {
+  margin: -2px 0 16px 22px;
+  padding: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.agree-detail li { margin: 2px 0; }
 .ws-success { text-align: center; padding: 20px 0; }
 .success-icon { font-size: 64px; margin-bottom: 16px; animation: pop 0.5s ease; }
 .ws-success h2 { font-size: 24px; margin-bottom: 8px; }
@@ -531,9 +549,11 @@ button { font-family: inherit; }
   .stat-rating { border-right: none; border-bottom: 1px solid var(--line); padding-right: 0; padding-bottom: 20px; }
   .profile-layout { grid-template-columns: 1fr; }
   .profile-side { position: static; }
+  .safe-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 700px) {
   .nav-links { display: none; }
   .hero-title { font-size: 44px; }
   .product-grid { grid-template-columns: 1fr; }
+  .safe-grid { grid-template-columns: 1fr; }
 }

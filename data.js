@@ -4,10 +4,10 @@ const T = {
     nav_explore: "탐색", nav_trending: "인기", nav_genre: "장르", nav_library: "내 라이브러리",
     btn_login: "로그인", btn_signup: "회원가입", btn_watch: "▶ 지금 보기",
     btn_trailer: "🎬 예고편 보기", btn_fav: "＋ 찜", btn_share: "🔗 공유",
-    badge_hot: "🔥 글로벌 인기 1위", badge_meta: "2024 · 드라마 · 8부작",
+    badge_hot: "🔥 화제의 BL 청춘물", badge_meta: "2025 · BL 드라마 · 10부작",
     age_15: "15세 이상", lang_subs: "한국어 / 자막 12개 언어",
     reviews_n: "리뷰", reviews_total: "개의 리뷰",
-    price_single: "단건 결제 ₩2,900부터", price_or: "또는 구독 멤버십에 포함",
+    price_single: "단건 결제 ₩4,900부터", price_or: "또는 구독 멤버십에 포함",
     earn_title: "이 작품을 친구에게 공유하면 포인트가 쌓여요",
     earn_desc: "당신이 공유한 링크로 누군가 시청하면, 그 결제의 일부가 당신의 수익이 됩니다.",
     earn_btn: "공유 링크 만들기",
@@ -44,18 +44,18 @@ const T = {
     footer_about: "전 세계 창작자와 시청자가 만나는 콘텐츠 오픈 플랫폼",
     footer_terms: "이용약관", footer_privacy: "개인정보처리방침",
     footer_help: "고객센터", footer_partner: "파트너 신청",
-    trailer_title: "예고편 · 달빛 아래 그대",
-    hero_desc: "평범한 일상에 어느 날 찾아온 비밀스러운 만남. 서로 다른 시간을 살아가는 두 사람이 달빛 아래에서 마주칠 때, 운명은 어디로 향할까.",
-    synopsis: "조용한 골목길의 작은 책방 주인 유진은 어느 날 낡은 일기장을 발견한다. 일기장에 적힌 인물 도윤은 100년 전을 살았던 사람이지만, 어느 보름달 밤, 두 사람은 같은 거리에서 마주친다. 서로의 시간이 잠시 겹치는 보름달의 밤, 그들의 짧은 만남은 점차 운명을 흔들기 시작하는데…"
+    trailer_title: "예고편 · 2반 이희수",
+    hero_desc: "평범한 고등학생 희수는 연애 상담은 잘하지만 자신의 마음만은 숨긴 채 살아간다. 십년지기 찬영을 향한 비밀스러운 짝사랑이 흔들리기 시작한다.",
+    synopsis: "열여덟 희수는 자칭 타칭 연애 1타 강사지만 사실 연애 경험은 없는 모태솔로다. 남몰래 베프 찬영을 좋아해왔지만, 찬영이 동급생 지유에게 호감을 보이기 시작하면서 희수의 평온한 일상은 흔들린다. 반장 승원까지 얽히며 네 사람의 감정선은 예측할 수 없는 방향으로 흐르기 시작한다."
   },
   en: {
     nav_explore: "Explore", nav_trending: "Trending", nav_genre: "Genre", nav_library: "My Library",
     btn_login: "Sign in", btn_signup: "Sign up", btn_watch: "▶ Watch Now",
     btn_trailer: "🎬 Watch Trailer", btn_fav: "＋ Save", btn_share: "🔗 Share",
-    badge_hot: "🔥 #1 Global Hit", badge_meta: "2024 · Drama · 8 Episodes",
+    badge_hot: "🔥 Trending BL Youth Drama", badge_meta: "2025 · BL Drama · 10 Episodes",
     age_15: "Age 15+", lang_subs: "Korean / Subtitles in 12 languages",
     reviews_n: "Reviews", reviews_total: "reviews",
-    price_single: "From $3.99", price_or: "or included in membership",
+    price_single: "From $4.99", price_or: "or included in membership",
     earn_title: "Share this title with friends and earn points",
     earn_desc: "When someone watches via your shared link, you earn a part of their payment.",
     earn_btn: "Create share link",
@@ -91,24 +91,24 @@ const T = {
     footer_about: "A global open platform connecting creators and viewers",
     footer_terms: "Terms", footer_privacy: "Privacy",
     footer_help: "Help", footer_partner: "Become a Partner",
-    trailer_title: "Trailer · Moonlight With You",
-    hero_desc: "An ordinary day. A mysterious meeting. When two people from different times meet under the moonlight, where does fate lead them?",
-    synopsis: "Yujin, the owner of a small bookstore in a quiet alley, finds an old diary. Doyun, the person written in it, lived a hundred years ago — yet on a full moon night, the two meet on the same street. Their brief encounters slowly begin to shake destiny itself…"
+    trailer_title: "Trailer · Lee Hee-su in Class 2",
+    hero_desc: "Hee-su is great at giving dating advice, but hides his own feelings. His long-time crush on his best friend Chan-young starts to unravel.",
+    synopsis: "At eighteen, Hee-su is known as the best love counselor despite having zero dating experience. He has secretly loved his best friend Chan-young for years, but things change when Chan-young gets interested in Ji-yu. With class president Seung-won entering the mix, their emotions collide in unexpected ways."
   }
 };
 
 // ============ CONTENT DATA ============
 const CONTENT = {
-  id: "moonlight-with-you",
-  title: { ko: "달빛 아래 그대", en: "Moonlight With You" },
-  heroImage: "linear-gradient(135deg, #1a0f2e 0%, #4a1a5e 40%, #8b3a8a 100%)"
+  id: "lee-heesu-class-2",
+  title: { ko: "2반 이희수 (구매 전용)", en: "Lee Hee-su in Class 2 (Purchase Only)" },
+  heroImage: "url('https://image.heavenly.tv/content/10391675862903814763-20260122024007.jpg') center/cover no-repeat"
 };
 
 const SCENES = [
-  { title: { ko: "운명적인 첫 만남", en: "A Fated First Encounter" }, time: "EP1 · 12:30", color: "linear-gradient(135deg,#3a1c5e,#8b3a8a)" },
-  { title: { ko: "보름달의 약속", en: "Promise of the Full Moon" }, time: "EP3 · 24:18", color: "linear-gradient(135deg,#0f3a5e,#3a8aa8)" },
-  { title: { ko: "사라지는 시간", en: "Time Slipping Away" }, time: "EP5 · 31:44", color: "linear-gradient(135deg,#5e1c3a,#a83a5e)" },
-  { title: { ko: "마지막 편지", en: "The Last Letter" }, time: "EP7 · 40:02", color: "linear-gradient(135deg,#1c5e3a,#3aa85e)" }
+  { title: { ko: "희수의 비밀 상담소", en: "Hee-su's Secret Advice Booth" }, time: "EP1 · 11:42", color: "linear-gradient(135deg,#3a1c5e,#8b3a8a)" },
+  { title: { ko: "찬영의 새로운 관심", en: "Chan-young's New Crush" }, time: "EP3 · 23:11", color: "linear-gradient(135deg,#0f3a5e,#3a8aa8)" },
+  { title: { ko: "승원의 예기치 못한 직진", en: "Seung-won's Unexpected Move" }, time: "EP6 · 29:38", color: "linear-gradient(135deg,#5e1c3a,#a83a5e)" },
+  { title: { ko: "네 사람의 감정 교차점", en: "Crossroads of Four Hearts" }, time: "EP10 · 41:06", color: "linear-gradient(135deg,#1c5e3a,#3aa85e)" }
 ];
 
 const QUOTES = [
@@ -118,44 +118,44 @@ const QUOTES = [
 ];
 
 const CAST = [
-  { name: { ko: "한지우", en: "Han Jiwoo" }, role: { ko: "유진 役", en: "as Yujin" }, emoji: "👩" },
-  { name: { ko: "이도현", en: "Lee Dohyun" }, role: { ko: "도윤 役", en: "as Doyun" }, emoji: "👨" },
-  { name: { ko: "정수민", en: "Jung Sumin" }, role: { ko: "수민 役", en: "as Sumin" }, emoji: "👩‍🦰" },
-  { name: { ko: "박재현", en: "Park Jaehyun" }, role: { ko: "재현 役", en: "as Jaehyun" }, emoji: "🧑" },
-  { name: { ko: "김아름", en: "Kim Areum" }, role: { ko: "각본", en: "Screenplay" }, emoji: "✍️" },
-  { name: { ko: "최민수", en: "Choi Minsu" }, role: { ko: "연출", en: "Director" }, emoji: "🎬" }
+  { name: { ko: "안지호", en: "Ahn Ji-ho" }, role: { ko: "희수 役", en: "as Hee-su" }, emoji: "👦" },
+  { name: { ko: "조준영", en: "Cho Jun-young" }, role: { ko: "찬영 役", en: "as Chan-young" }, emoji: "🧑" },
+  { name: { ko: "김도연", en: "Kim Do-yeon" }, role: { ko: "지유 役", en: "as Ji-yu" }, emoji: "👧" },
+  { name: { ko: "이상준", en: "Lee Sang-jun" }, role: { ko: "승원 役", en: "as Seung-won" }, emoji: "👨" },
+  { name: { ko: "박경민", en: "Park Kyung-min" }, role: { ko: "원작", en: "Creator" }, emoji: "✍️" },
+  { name: { ko: "StoryHub", en: "StoryHub" }, role: { ko: "배급", en: "Distribution" }, emoji: "🎬" }
 ];
 
-// 16 reviews for the reviews page
+// Reviews from heavenly detail/891 API
 const REVIEWS = [
-  { user: "moonlover92", country: "🇰🇷", rating: 5, photo: true, verified: true, spoiler: false, title: { ko: "올해 본 드라마 중 단연 최고", en: "Best drama of the year" }, body: { ko: "초반엔 잔잔했는데 3화부터 멈출 수가 없었어요. 영상미와 음악이 압권입니다. 마지막화는 세 번 봤네요.", en: "Quiet at first, but from EP3 I couldn't stop. Cinematography and score are incredible. Watched the finale 3 times." }, likes: 482, date: "2025.01.12" },
-  { user: "tokyo_anna", country: "🇯🇵", rating: 5, photo: false, verified: true, spoiler: false, title: { ko: "韓国ドラマで久々の傑作", en: "A masterpiece of Korean drama" }, body: { ko: "字幕で見ましたが、感情がそのまま伝わってきました。主演二人のケミがすごい。", en: "Watched with subs — emotions came through perfectly. Chemistry between the leads is amazing." }, likes: 318, date: "2025.01.10" },
-  { user: "carlos_mx", country: "🇲🇽", rating: 4, photo: true, verified: true, spoiler: false, title: { ko: "Visualmente hermoso", en: "Visually stunning" }, body: { ko: "La fotografía es preciosa. La historia te atrapa desde el primer episodio.", en: "Cinematography is gorgeous. Story hooks you from the very first episode." }, likes: 201, date: "2025.01.08" },
-  { user: "novel_reader", country: "🇰🇷", rating: 5, photo: false, verified: true, spoiler: true, title: { ko: "원작 팬으로서 만족", en: "As a fan of the novel — satisfied" }, body: { ko: "원작 소설을 좋아했는데, 영상화가 이렇게 잘 될 줄 몰랐습니다. 각색이 훌륭해요.", en: "Loved the original novel — never expected the adaptation to be this good." }, likes: 156, date: "2025.01.05" },
-  { user: "paris_juliette", country: "🇫🇷", rating: 5, photo: true, verified: true, spoiler: false, title: { ko: "Magnifique!", en: "Magnifique!" }, body: { ko: "Une histoire poétique. Les images, la musique... tout est parfait.", en: "A poetic story. Images, music... everything is perfect." }, likes: 98, date: "2025.01.04" },
-  { user: "berlin_max", country: "🇩🇪", rating: 4, photo: false, verified: true, spoiler: false, title: { ko: "Sehr emotional", en: "Very emotional" }, body: { ko: "Die Charaktere sind lebendig. Episode 6 hat mich zum Weinen gebracht.", en: "Characters feel real. EP6 made me cry." }, likes: 87, date: "2025.01.03" },
-  { user: "manila_jen", country: "🇵🇭", rating: 5, photo: true, verified: false, spoiler: false, title: { ko: "Best K-drama 2024!", en: "Best K-drama 2024!" }, body: { ko: "I rewatched the trailer 20 times before watching. Worth every minute.", en: "I rewatched the trailer 20 times before watching. Worth every minute." }, likes: 142, date: "2025.01.02" },
-  { user: "delhi_priya", country: "🇮🇳", rating: 5, photo: false, verified: true, spoiler: false, title: { ko: "Unique storytelling", en: "Unique storytelling" }, body: { ko: "The way time is woven into the romance is genius. Loved every moment.", en: "The way time is woven into the romance is genius. Loved every moment." }, likes: 119, date: "2024.12.30" },
-  { user: "sao_lucas", country: "🇧🇷", rating: 3, photo: false, verified: true, spoiler: false, title: { ko: "Bom mas previsível", en: "Good but predictable" }, body: { ko: "Boa produção mas algumas cenas demoradas demais.", en: "Solid production but some scenes drag a bit." }, likes: 34, date: "2024.12.28" },
-  { user: "sydney_emma", country: "🇦🇺", rating: 5, photo: true, verified: true, spoiler: false, title: { ko: "Couldn't sleep after EP8", en: "Couldn't sleep after EP8" }, body: { ko: "That ending. I have so many feelings. Please give us a season 2.", en: "That ending. I have so many feelings. Please give us a season 2." }, likes: 267, date: "2024.12.27" },
-  { user: "hanoi_nam", country: "🇻🇳", rating: 4, photo: false, verified: true, spoiler: false, title: { ko: "Phim hay quá", en: "Such a beautiful drama" }, body: { ko: "Diễn xuất tuyệt vời, kịch bản chặt chẽ.", en: "Wonderful acting, tight script." }, likes: 76, date: "2024.12.26" },
-  { user: "bangkok_ploy", country: "🇹🇭", rating: 5, photo: true, verified: true, spoiler: false, title: { ko: "ดูซ้ำได้ทุกวัน", en: "Could watch every day" }, body: { ko: "ดูครบทุกตอนภายในวันเดียว เก็บอารมณ์ไม่อยู่!", en: "Watched all episodes in one day. Couldn't keep my emotions in!" }, likes: 88, date: "2024.12.25" }
+  { user: "Sm0K5HbK85qH", country: "🇰🇷", rating: 5, photo: false, verified: false, spoiler: false, title: { ko: "재밌어요!", en: "재밌어요!" }, body: { ko: "재밌어요!", en: "재밌어요!" }, likes: 0, date: "2025.05.03" },
+  { user: "f0qX9L9Hqnvy", country: "🇯🇵", rating: 5, photo: false, verified: true, spoiler: false, title: { ko: "아 진짜 못 헤어나오겠어 희수도 귀여운데 우리 …", en: "아 진짜 못 헤어나오겠어 희수도 귀여운데 우리 …" }, body: { ko: "아 진짜 못 헤어나오겠어 희수도 귀여운데 우리 햇살공 쩔쩔매는거 나 미칠거 같아. 하트스토퍼를 5번 넘게 재탕 했는데 여기는 벌써 7~10화만 세번째 돌리고 있어....내가 어쩌자고 이걸 미리 사서 봤을까....그리고 아무도 말 안하는데 당근친구야 너도 좋은 사람만날거야...", en: "아 진짜 못 헤어나오겠어 희수도 귀여운데 우리 햇살공 쩔쩔매는거 나 미칠거 같아. 하트스토퍼를 5번 넘게 재탕 했는데 여기는 벌써 7~10화만 세번째 돌리고 있어....내가 어쩌자고 이걸 미리 사서 봤을까....그리고 아무도 말 안하는데 당근친구야 너도 좋은 사람만날거야..." }, likes: 5, date: "2025.05.02" },
+  { user: "eXm1jnzDHbCj", country: "🇹🇭", rating: 5, photo: false, verified: true, spoiler: false, title: { ko: "진짜 왠만해선 벨드 중간에보다가 끄는데 이유가 …", en: "진짜 왠만해선 벨드 중간에보다가 끄는데 이유가 …" }, body: { ko: "진짜 왠만해선 벨드 중간에보다가 끄는데 이유가 (태국 BL 잘 못봄 억양과 표정 목소리가 뭐든지 아직까진 과함..어느정도냐면 일기예보적연애 우연시 연애지상주의구역도 잘못봄..) 뭐든지 어색하거나 이해안되는 어색한 연기들도있고한데 OST는 너무 찰떡인데다 유년시절 제가 했었던 고민, 방황들..이 너무 잘 묘사되어있고 무엇보다 한 화마다 몰입이 더 심해져서 과몰입.... 끝내 앓는중이라 이렇게 앓아보고싶어 여기저기 다 찾아봤는데 헤븐리 설치하고 정말 잘본것같아요. 큐브 안아까워요. 전개도 자연스럽고 조연하나하나마다 각자의 기승전결이 있으며 뭐하나 부자연스럽지 않음. 감독님 배우님들 이 드라마에 참여해주신 모든 분들께 감사합니다.", en: "진짜 왠만해선 벨드 중간에보다가 끄는데 이유가 (태국 BL 잘 못봄 억양과 표정 목소리가 뭐든지 아직까진 과함..어느정도냐면 일기예보적연애 우연시 연애지상주의구역도 잘못봄..) 뭐든지 어색하거나 이해안되는 어색한 연기들도있고한데 OST는 너무 찰떡인데다 유년시절 제가 했었던 고민, 방황들..이 너무 잘 묘사되어있고 무엇보다 한 화마다 몰입이 더 심해져서 과몰입.... 끝내 앓는중이라 이렇게 앓아보고싶어 여기저기 다 찾아봤는데 헤븐리 설치하고 정말 잘본것같아요. 큐브 안아까워요. 전개도 자연스럽고 조연하나하나마다 각자의 기승전결이 있으며 뭐하나 부자연스럽지 않음. 감독님 배우님들 이 드라마에 참여해주신 모든 분들께 감사합니다." }, likes: 5, date: "2025.05.01" },
+  { user: "user_4529", country: "🇺🇸", rating: 5, photo: false, verified: true, spoiler: false, title: { ko: "다 좋은데 커플을 메인 서브가 아니라 메인 메인…", en: "다 좋은데 커플을 메인 서브가 아니라 메인 메인…" }, body: { ko: "다 좋은데 커플을 메인 서브가 아니라 메인 메인 느낌이라 좀 아쉽 마지막화 정도는 오로지 희수 커플한테 할당해 주는게 더 나았을듯. 희수랑 꽁냥거리는거만 10화정도 더 보여줬으면....", en: "다 좋은데 커플을 메인 서브가 아니라 메인 메인 느낌이라 좀 아쉽 마지막화 정도는 오로지 희수 커플한테 할당해 주는게 더 나았을듯. 희수랑 꽁냥거리는거만 10화정도 더 보여줬으면...." }, likes: 8, date: "2025.05.01" },
+  { user: "user_4528", country: "🇲🇽", rating: 5, photo: false, verified: true, spoiler: false, title: { ko: "자극적이지 않아도 키갈이 없어도 탄탄스토리와 연…", en: "자극적이지 않아도 키갈이 없어도 탄탄스토리와 연…" }, body: { ko: "자극적이지 않아도 키갈이 없어도 탄탄스토리와 연기력이 상급 bl을 만듦...추천함..씹덕들이여 꼭 보시오", en: "자극적이지 않아도 키갈이 없어도 탄탄스토리와 연기력이 상급 bl을 만듦...추천함..씹덕들이여 꼭 보시오" }, likes: 6, date: "2025.05.01" },
+  { user: "user_4527", country: "🇫🇷", rating: 5, photo: false, verified: true, spoiler: false, title: { ko: "제발 즌2 주세요ㅜㅜ 10편만 몇번을 돌려보는지", en: "제발 즌2 주세요ㅜㅜ 10편만 몇번을 돌려보는지" }, body: { ko: "제발 즌2 주세요ㅜㅜ 10편만 몇번을 돌려보는지", en: "제발 즌2 주세요ㅜㅜ 10편만 몇번을 돌려보는지" }, likes: 10, date: "2025.05.01" },
+  { user: "김곤약", country: "🇩🇪", rating: 5, photo: false, verified: true, spoiler: false, title: { ko: "이게 2반 이희수인지 2반 주찬영인지 모를 분량…", en: "이게 2반 이희수인지 2반 주찬영인지 모를 분량…" }, body: { ko: "이게 2반 이희수인지 2반 주찬영인지 모를 분량.. 화나기전에 시즌 2 주세요.", en: "이게 2반 이희수인지 2반 주찬영인지 모를 분량.. 화나기전에 시즌 2 주세요." }, likes: 4, date: "2025.05.01" },
+  { user: "KuCGavWKW0mv", country: "🇵🇭", rating: 5, photo: false, verified: true, spoiler: false, title: { ko: "인생벨드,, 다른 bl드라마보다 느린 전개가 훨…", en: "인생벨드,, 다른 bl드라마보다 느린 전개가 훨…" }, body: { ko: "인생벨드,, 다른 bl드라마보다 느린 전개가 훨씬 매력적이다. 감정선이 너무 급변하지 않아 몰입도 잘되고 좋았다.. 시즌2 나왔으면", en: "인생벨드,, 다른 bl드라마보다 느린 전개가 훨씬 매력적이다. 감정선이 너무 급변하지 않아 몰입도 잘되고 좋았다.. 시즌2 나왔으면" }, likes: 4, date: "2025.04.29" },
+  { user: "연개소문 (예뜨 Yette)", country: "🇮🇳", rating: 4, photo: false, verified: true, spoiler: false, title: { ko: "어휴 이 답답이들아..... 밀당만 3편이다", en: "어휴 이 답답이들아..... 밀당만 3편이다" }, body: { ko: "어휴 이 답답이들아..... 밀당만 3편이다", en: "어휴 이 답답이들아..... 밀당만 3편이다" }, likes: 1, date: "2025.04.29" },
+  { user: "user_4505", country: "🇻🇳", rating: 5, photo: false, verified: true, spoiler: false, title: { ko: "엔딩이 너무 빠른거 아니오…", en: "엔딩이 너무 빠른거 아니오…" }, body: { ko: "엔딩이 너무 빠른거 아니오…", en: "엔딩이 너무 빠른거 아니오…" }, likes: 1, date: "2025.04.29" },
+  { user: ".구름", country: "🇧🇷", rating: 5, photo: false, verified: true, spoiler: false, title: { ko: "귀여우면 끝났다고 하죠 전 이 작품 보고 진짜 …", en: "귀여우면 끝났다고 하죠 전 이 작품 보고 진짜 …" }, body: { ko: "귀여우면 끝났다고 하죠 전 이 작품 보고 진짜 그걸 느껴요.... 연기도 내용도 연출도 너무 좋아서 곱씹어서 계속 보게 되는 드라마 2반이희수를 만나 너무 행복합니다", en: "귀여우면 끝났다고 하죠 전 이 작품 보고 진짜 그걸 느껴요.... 연기도 내용도 연출도 너무 좋아서 곱씹어서 계속 보게 되는 드라마 2반이희수를 만나 너무 행복합니다" }, likes: 4, date: "2025.04.29" },
+  { user: "ㅇㅎㅇ", country: "🇨🇦", rating: 5, photo: false, verified: false, spoiler: false, title: { ko: "배우들 비주얼,케미 다 좋고 진짜 이렇게 완성도…", en: "배우들 비주얼,케미 다 좋고 진짜 이렇게 완성도…" }, body: { ko: "배우들 비주얼,케미 다 좋고 진짜 이렇게 완성도 높은 벨드는 처음 봐서 너무 좋았습니다.. 고백을 조금 늦게하긴 했지만 사귀기 전까지의 둘의 관계 속에서 간질간질하고 애타는 풋풋한 느낌이 너무 좋아서 내용적인 면에서도 정말 좋았습니다... 엔딩이 너무 완벽하게 끝나서 시즌2가 나올지는 모르겠지만 외전으로라도 승원희수를 주로 다루는,꽁냥거리는 모습들 볼 수 있었으면 좋겠습니다!", en: "배우들 비주얼,케미 다 좋고 진짜 이렇게 완성도 높은 벨드는 처음 봐서 너무 좋았습니다.. 고백을 조금 늦게하긴 했지만 사귀기 전까지의 둘의 관계 속에서 간질간질하고 애타는 풋풋한 느낌이 너무 좋아서 내용적인 면에서도 정말 좋았습니다... 엔딩이 너무 완벽하게 끝나서 시즌2가 나올지는 모르겠지만 외전으로라도 승원희수를 주로 다루는,꽁냥거리는 모습들 볼 수 있었으면 좋겠습니다!" }, likes: 6, date: "2025.04.29" }
 ];
 
 // Explore content
 const EXPLORE_CONTENT = [
-  { title: { ko: "달빛 아래 그대", en: "Moonlight With You" }, genre: { ko: "로맨스", en: "Romance" }, rating: 4.9, year: 2024, color: "linear-gradient(135deg,#1a0f2e,#8b3a8a)" },
-  { title: { ko: "별이 머무는 밤", en: "Where Stars Stay" }, genre: { ko: "로맨스", en: "Romance" }, rating: 4.7, year: 2023, color: "linear-gradient(135deg,#1a3a5e,#3a6aa8)" },
-  { title: { ko: "서울의 비밀", en: "Secrets of Seoul" }, genre: { ko: "스릴러", en: "Thriller" }, rating: 4.8, year: 2024, color: "linear-gradient(135deg,#3a1a1a,#8a3a3a)" },
-  { title: { ko: "파리의 봄", en: "A Spring in Paris" }, genre: { ko: "로맨스", en: "Romance" }, rating: 4.6, year: 2024, color: "linear-gradient(135deg,#3a5e1a,#7aa83a)" },
-  { title: { ko: "시간의 끝에서", en: "At the End of Time" }, genre: { ko: "판타지", en: "Fantasy" }, rating: 4.9, year: 2023, color: "linear-gradient(135deg,#5e3a1a,#a87a3a)" },
-  { title: { ko: "조용한 도시", en: "Silent City" }, genre: { ko: "드라마", en: "Drama" }, rating: 4.5, year: 2024, color: "linear-gradient(135deg,#3a3a5e,#6a6aa8)" },
-  { title: { ko: "여름의 기억", en: "Summer Memory" }, genre: { ko: "로맨스", en: "Romance" }, rating: 4.7, year: 2022, color: "linear-gradient(135deg,#5e1a4a,#a83a8a)" },
-  { title: { ko: "마지막 영웅", en: "The Last Hero" }, genre: { ko: "액션", en: "Action" }, rating: 4.4, year: 2024, color: "linear-gradient(135deg,#5e1a1a,#a83a3a)" },
-  { title: { ko: "달의 정원", en: "Moon Garden" }, genre: { ko: "판타지", en: "Fantasy" }, rating: 4.8, year: 2024, color: "linear-gradient(135deg,#1a1a5e,#3a3aa8)" },
-  { title: { ko: "검은 강", en: "Black River" }, genre: { ko: "스릴러", en: "Thriller" }, rating: 4.6, year: 2023, color: "linear-gradient(135deg,#1a1a1a,#3a3a3a)" },
-  { title: { ko: "웃음의 거리", en: "Laughing Street" }, genre: { ko: "코미디", en: "Comedy" }, rating: 4.3, year: 2024, color: "linear-gradient(135deg,#5e5a1a,#a89a3a)" },
-  { title: { ko: "첫눈처럼", en: "Like First Snow" }, genre: { ko: "로맨스", en: "Romance" }, rating: 4.5, year: 2023, color: "linear-gradient(135deg,#3a5a7a,#7aa8c8)" }
+  { title: { ko: "여군동 : 되돌린 운명", en: "Reversed Fate" }, genre: { ko: "BL 드라마", en: "BL Drama" }, rating: 4.9, year: 2026, color: "linear-gradient(135deg,#1a0f2e,#8b3a8a)", poster: "https://image.heavenly.tv/content/ko/15016056177310822577-20260511003641.jpg" },
+  { title: { ko: "시선 : 내가 너를 바라볼 때", en: "When I Look at You" }, genre: { ko: "BL 드라마", en: "BL Drama" }, rating: 4.8, year: 2026, color: "linear-gradient(135deg,#1a3a5e,#3a6aa8)", poster: "https://image.heavenly.tv/content/ko/9289376324815718378-20260511003627.jpg" },
+  { title: { ko: "Flower Boy : 향기에 홀린 소년", en: "Flower Boy" }, genre: { ko: "BL 로맨스", en: "BL Romance" }, rating: 4.7, year: 2026, color: "linear-gradient(135deg,#3a1a1a,#8a3a3a)", poster: "https://image.heavenly.tv/content/ko/3127675377108175193-20260427030106.jpg" },
+  { title: { ko: "페이크 팩트 립스", en: "Fake Fact Lips" }, genre: { ko: "BL 로맨스", en: "BL Romance" }, rating: 4.7, year: 2026, color: "linear-gradient(135deg,#3a5e1a,#7aa83a)", poster: "https://image.heavenly.tv/content/en/4565530415751369304-20260424053637.jpg" },
+  { title: { ko: "Fourever You Part 2", en: "Fourever You Part 2" }, genre: { ko: "BL 드라마", en: "BL Drama" }, rating: 4.6, year: 2026, color: "linear-gradient(135deg,#5e3a1a,#a87a3a)", poster: "https://image.heavenly.tv/content/ko/1774050815668496237-20260414030344.jpg" },
+  { title: { ko: "스모키 블루의 비 내린 뒤 맑음", en: "Smoky Blue" }, genre: { ko: "BL 드라마", en: "BL Drama" }, rating: 4.6, year: 2026, color: "linear-gradient(135deg,#3a3a5e,#6a6aa8)", poster: "https://image.heavenly.tv/content/en/13312822614641726346-20260406082736.jpg" },
+  { title: { ko: "나의 눈빛에 비친 너의 마음", en: "Your Heart in My Eyes" }, genre: { ko: "BL 드라마", en: "BL Drama" }, rating: 4.5, year: 2026, color: "linear-gradient(135deg,#5e1a4a,#a83a8a)", poster: "https://image.heavenly.tv/content/en/15562135549383364530-20260511004039.jpg" },
+  { title: { ko: "Wishing Upon the Shooting Stars", en: "Wishing Upon the Shooting Stars" }, genre: { ko: "BL 판타지", en: "BL Fantasy" }, rating: 4.5, year: 2026, color: "linear-gradient(135deg,#5e1a1a,#a83a3a)", poster: "https://image.heavenly.tv/content/en/15867651056823171029-20260410075819.jpg" },
+  { title: { ko: "네 원수를 잊지 마라", en: "Don't Forget Your Enemy" }, genre: { ko: "BL 코미디", en: "BL Comedy" }, rating: 4.4, year: 2026, color: "linear-gradient(135deg,#1a1a5e,#3a3aa8)", poster: "https://image.heavenly.tv/content/ko/9042791802891554916-20260504042825.jpg" },
+  { title: { ko: "가장 실패 없는 작품만 모았다!", en: "Can't-miss Collection" }, genre: { ko: "큐레이션", en: "Curation" }, rating: 4.3, year: 2026, color: "linear-gradient(135deg,#1a1a1a,#3a3a3a)", poster: "https://image.heavenly.tv/featured/12823202599141364070-20260105064043.jpg" },
+  { title: { ko: "5월 멤버십 라인업", en: "May Membership Lineup" }, genre: { ko: "멤버십", en: "Membership" }, rating: 4.2, year: 2026, color: "linear-gradient(135deg,#5e5a1a,#a89a3a)", poster: "https://image.heavenly.tv/featured/4139756345323049580-20260506004607.jpg" },
+  { title: { ko: "다시 얽히기 시작한 네 사람의 운명", en: "Entwined Fates" }, genre: { ko: "BL 드라마", en: "BL Drama" }, rating: 4.4, year: 2026, color: "linear-gradient(135deg,#3a5a7a,#7aa8c8)", poster: "https://image.heavenly.tv/featured/4587989101066010264-20260508052529.jpg" }
 ];
 
 const GENRES = [
@@ -175,7 +175,6 @@ const GENRES = [
 
 // Watch flow products
 const PRODUCTS = [
-  { id: "p1", quality: "HD", res: "720p", days: 2, price: 2900, badge: null },
   { id: "p2", quality: "HD", res: "720p", days: 7, price: 4900, badge: { ko: "추천", en: "POPULAR" } },
   { id: "p3", quality: "FHD", res: "1080p", days: 30, price: 7900, badge: null },
   { id: "p4", quality: "4K UHD", res: "2160p HDR", days: 30, price: 9900, badge: { ko: "최고화질", en: "BEST" } },
@@ -184,11 +183,7 @@ const PRODUCTS = [
 
 const PAY_METHODS = [
   { id: "card", name: { ko: "신용/체크카드", en: "Credit/Debit Card" }, icon: "💳", desc: { ko: "Visa, Master, JCB 등", en: "Visa, MasterCard, JCB & more" } },
-  { id: "paypal", name: { ko: "PayPal", en: "PayPal" }, icon: "🅿️", desc: { ko: "전 세계 200+개국 지원", en: "200+ countries supported" } },
-  { id: "applepay", name: { ko: "Apple Pay", en: "Apple Pay" }, icon: "", desc: { ko: "Touch ID / Face ID", en: "Touch ID / Face ID" } },
-  { id: "googlepay", name: { ko: "Google Pay", en: "Google Pay" }, icon: "G", desc: { ko: "원클릭 결제", en: "One-click checkout" } },
   { id: "kakaopay", name: { ko: "카카오페이", en: "KakaoPay" }, icon: "K", desc: { ko: "국내 간편결제", en: "Korea fast pay" } },
-  { id: "tosspay", name: { ko: "토스페이", en: "TossPay" }, icon: "T", desc: { ko: "국내 간편결제", en: "Korea fast pay" } }
 ];
 
 // Points history
@@ -229,4 +224,4 @@ const RT_TEMPLATES = [
 ];
 
 // Rating distribution (5,4,3,2,1)
-const RATING_DIST = [9420, 2310, 540, 110, 58];
+const RATING_DIST = [120, 30, 9, 3, 2];
