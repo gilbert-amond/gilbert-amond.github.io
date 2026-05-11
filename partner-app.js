@@ -619,10 +619,10 @@ function renderSetTab(tab) {
   if (tab === "company") {
     return `<div class="card"><div class="form-card">
       <div class="form-row"><label>${LANG==='ko'?'회사명':'Company'}</label><input type="text" value="Moonlight Studios Inc."></div>
-      <div class="form-row"><label>${LANG==='ko'?'사업자등록번호':'Business ID'}</label><input type="text" value="123-45-67890"></div>
-      <div class="form-row"><label>${LANG==='ko'?'대표자':'CEO'}</label><input type="text" value="Kim Daehyun"></div>
+      <div class="form-row"><label>${LANG==='ko'?'사업자등록번호':'Business ID'}</label><input type="text" value="431-81-02555"></div>
+      <div class="form-row"><label>${LANG==='ko'?'대표자':'CEO'}</label><input type="text" value="장지혜"></div>
       <div class="form-row"><label>${LANG==='ko'?'국가':'Country'}</label><select><option>🇰🇷 Korea</option></select></div>
-      <div class="form-row"><label>${LANG==='ko'?'주소':'Address'}</label><input type="text" value="${LANG==='ko'?'서울시 강남구 테헤란로 123':'123 Teheran-ro, Gangnam, Seoul'}"></div>
+      <div class="form-row"><label>${LANG==='ko'?'주소':'Address'}</label><input type="text" value="${LANG==='ko'?'(06101) 서울특별시 강남구 봉은사로43길 45 (논현동)':'45, Bongeunsa-ro 43-gil, Gangnam-gu, Seoul (06101)'}"></div>
       <div class="form-row"><label>${LANG==='ko'?'담당자':'Contact'}</label><input type="text" value="Lee Sangmin"></div>
       <div class="form-row"><label>${LANG==='ko'?'담당자 이메일':'Contact email'}</label><input type="email" value="partner@moonlight.studio"></div>
       <button class="btn-primary">${t('save')}</button>
