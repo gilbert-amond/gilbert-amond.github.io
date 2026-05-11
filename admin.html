@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryHub Admin Console</title>
+<link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div id="loginOverlay" class="login-overlay">
+  <div class="login-box">
+    <div class="login-brand">▶ StoryHub <span class="ad">Admin</span></div>
+    <h1 data-i18n="login_title">관리자 로그인</h1>
+    <p data-i18n="login_sub">플랫폼 운영 콘솔</p>
+    <div class="login-body">
+      <input type="email" placeholder="admin@storyhub.app">
+      <input type="password" placeholder="••••••••">
+      <input type="text" placeholder="2FA Code (000000)">
+      <button class="btn-primary full" onclick="enterAdmin()" data-i18n="btn_login">로그인</button>
+    </div>
+    <div class="login-note" data-i18n="auth_note">💡 프로토타입입니다. 입력 없이 로그인을 누르세요.</div>
+    <div class="login-foot">
+      <span>🔒 SSO · 2FA Required</span>
+      <span>v3.4.2</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONSOLE ============ -->
+<div id="console" class="console hidden">
+
+  <aside class="sidebar">
+    <div class="sb-brand">▶ <span>StoryHub</span><em>Admin Console</em></div>
+    <div class="sb-user">
+      <div class="sb-user-av">A</div>
+      <div>
+        <div class="sb-user-name">Admin · Park J.</div>
+        <div class="sb-user-role">Super Admin</div>
+      </div>
+      <span class="online"></span>
+    </div>
+    <nav class="sb-nav" id="sbNav">
+      <a href="#" data-page="dashboard" class="active"><span>📊</span><span data-i18n="nav_dashboard">대시보드</span></a>
+      <div class="sb-sec" data-i18n="sec_review">검수</div>
+      <a href="#" data-page="review"><span>⏳</span><span data-i18n="nav_review">검수 대기</span><em class="badge-num" id="bgReview">12</em></a>
+      <a href="#" data-page="subtitle"><span>💬</span><span data-i18n="nav_sub">자막 검수</span><em class="badge-num">38</em></a>
+      <a href="#" data-page="reports"><span>🚩</span><span data-i18n="nav_reports">신고 처리</span><em class="badge-num red">7</em></a>
+      <div class="sb-sec" data-i18n="sec_manage">관리</div>
+      <a href="#" data-page="content"><span>🎞️</span><span data-i18n="nav_content">콘텐츠</span></a>
+      <a href="#" data-page="partners"><span>🤝</span><span data-i18n="nav_partners">파트너</span></a>
+      <a href="#" data-page="users"><span>👥</span><span data-i18n="nav_users">사용자</span></a>
+      <div class="sb-sec" data-i18n="sec_revenue">매출</div>
+      <a href="#" data-page="settlements"><span>💰</span><span data-i18n="nav_settle">정산</span></a>
+      <a href="#" data-page="featured"><span>🎯</span><span data-i18n="nav_feat">추천 / 배너</span></a>
+      <a href="#" data-page="promotions"><span>🎁</span><span data-i18n="nav_promo">프로모션</span></a>
+      <div class="sb-sec" data-i18n="sec_system">시스템</div>
+      <a href="#" data-page="analytics"><span>📈</span><span data-i18n="nav_analytics">통계 분석</span></a>
+      <a href="#" data-page="system"><span>🛠</span><span data-i18n="nav_system">시스템 설정</span></a>
+    </nav>
+    <div class="sb-foot">
+      <div class="health">
+        <span class="online"></span> <span data-i18n="all_ops">All systems operational</span>
+      </div>
+      <a href="#" id="btnLogout"><span>🚪</span><span data-i18n="logout">로그아웃</span></a>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="tb-left">
+        <input type="text" class="search" placeholder="콘텐츠, 파트너, 사용자, 거래 검색...">
+      </div>
+      <div class="tb-right">
+        <select id="langSelect" class="select-mini">
+          <option value="ko">🇰🇷 KO</option><option value="en">🇺🇸 EN</option>
+        </select>
+        <button class="icon-btn">🌐 <span data-i18n="all_regions">전 지역</span></button>
+        <button class="icon-btn" id="bellBtn">🔔 <span class="dot"></span></button>
+        <button class="icon-btn" onclick="window.open('partner.html','_blank')">📦 <span data-i18n="open_partner">파트너 콘솔</span></button>
+        <button class="icon-btn" onclick="window.open('index.html','_blank')">👁 <span data-i18n="open_user">유저 화면</span></button>
+        <div class="profile-wrap">
+          <button class="avatar" id="avatarBtn">A</button>
+          <div class="profile-menu hidden" id="profileMenu">
+            <div class="pm-head"><strong>Park Jaehyun</strong><span>admin@storyhub.app</span><div class="role-tag">Super Admin</div></div>
+            <a href="#" data-page="system"><span data-i18n="pm_account">계정 / 권한</span></a>
+            <a href="#" data-page="system"><span data-i18n="pm_audit">감사 로그</span></a>
+            <hr>
+            <a href="#" id="pmLogout"><span data-i18n="logout">로그아웃</span></a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="notif-drawer hidden" id="notifDrawer">
+      <h4 data-i18n="notif_title">알림</h4>
+      <div id="notifList"></div>
+    </div>
+
+    <main class="page" id="page"></main>
+  </div>
+</div>
+
+<!-- Modals -->
+<div class="modal-backdrop hidden" id="reviewModal">
+  <div class="modal review-modal"><button class="close" onclick="closeModal('reviewModal')">×</button><div id="reviewBody"></div></div>
+</div>
+<div class="modal-backdrop hidden" id="detailModal">
+  <div class="modal detail-modal"><button class="close" onclick="closeModal('detailModal')">×</button><div id="detailBody"></div></div>
+</div>
+<div class="modal-backdrop hidden" id="actionModal">
+  <div class="modal action-modal"><button class="close" onclick="closeModal('actionModal')">×</button><div id="actionBody"></div></div>
+</div>
+
+<div class="toast hidden" id="toast"></div>
+
+<script src="admin-data.js"></script>
+<script src="admin-app.js"></script>
+</body>
+</html>

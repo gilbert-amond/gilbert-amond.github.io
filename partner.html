@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryHub Partner — Creator Dashboard</title>
+<link rel="stylesheet" href="partner-styles.css">
+</head>
+<body>
+
+<!-- ============ LOGIN OVERLAY ============ -->
+<div id="loginOverlay" class="login-overlay">
+  <div class="login-box">
+    <div class="login-brand">▶ StoryHub <span>Partner</span></div>
+    <h1 data-i18n="login_title">파트너 로그인</h1>
+    <p data-i18n="login_sub">콘텐츠를 글로벌 시장에 유통하세요</p>
+
+    <div class="login-tabs">
+      <button class="ltab active" data-ltab="login" data-i18n="btn_login">로그인</button>
+      <button class="ltab" data-ltab="signup" data-i18n="btn_signup">파트너 신청</button>
+    </div>
+
+    <div class="login-body" id="loginBody"></div>
+
+    <div class="login-note" data-i18n="auth_note">💡 프로토타입입니다. 입력 없이 버튼을 눌러도 바로 진입됩니다.</div>
+
+    <div class="login-stats">
+      <div><strong>1,240+</strong><span data-i18n="ls_partners">파트너사</span></div>
+      <div><strong>$28M</strong><span data-i18n="ls_paid">누적 정산금액</span></div>
+      <div><strong>120+</strong><span data-i18n="ls_countries">서비스 국가</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD LAYOUT ============ -->
+<div id="dashboard" class="dashboard hidden">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-brand">▶ <span>StoryHub</span><em>Partner</em></div>
+    <div class="sb-org">
+      <div class="sb-org-logo">🎬</div>
+      <div>
+        <div class="sb-org-name">Moonlight Studios</div>
+        <div class="sb-org-tier">Verified Partner ✅</div>
+      </div>
+    </div>
+    <nav class="sb-nav" id="sbNav">
+      <a href="#" data-page="dashboard" class="active"><span>📊</span><span data-i18n="nav_dashboard">대시보드</span></a>
+      <a href="#" data-page="content"><span>🎞️</span><span data-i18n="nav_content">콘텐츠</span></a>
+      <a href="#" data-page="upload" class="primary"><span>＋</span><span data-i18n="nav_upload">콘텐츠 등록</span></a>
+      <a href="#" data-page="subtitles"><span>💬</span><span data-i18n="nav_subtitles">자막 관리</span></a>
+      <a href="#" data-page="revenue"><span>💰</span><span data-i18n="nav_revenue">매출 분석</span></a>
+      <a href="#" data-page="audience"><span>👥</span><span data-i18n="nav_audience">시청자 인사이트</span></a>
+      <a href="#" data-page="marketing"><span>📢</span><span data-i18n="nav_marketing">마케팅</span></a>
+      <a href="#" data-page="payouts"><span>🏦</span><span data-i18n="nav_payouts">정산</span></a>
+      <a href="#" data-page="brand"><span>🎨</span><span data-i18n="nav_brand">브랜드 페이지</span></a>
+      <a href="#" data-page="settings"><span>⚙️</span><span data-i18n="nav_settings">설정</span></a>
+    </nav>
+    <div class="sb-foot">
+      <a href="#" id="btnHelp"><span>❓</span><span data-i18n="nav_help">도움말</span></a>
+      <a href="#" id="btnLogout"><span>🚪</span><span data-i18n="nav_logout">로그아웃</span></a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <header class="topbar">
+      <div class="tb-left">
+        <input type="text" class="search" id="searchInput" placeholder="콘텐츠, 시청자, 거래 검색...">
+      </div>
+      <div class="tb-right">
+        <select id="langSelect" class="select-mini">
+          <option value="ko">🇰🇷 KO</option>
+          <option value="en">🇺🇸 EN</option>
+        </select>
+        <button class="icon-btn" title="알림" id="bellBtn">
+          🔔 <span class="dot"></span>
+        </button>
+        <button class="icon-btn" title="View as user" onclick="window.open('index.html','_blank')">👁 <span data-i18n="view_user">유저로 보기</span></button>
+        <div class="profile-wrap">
+          <button class="avatar" id="avatarBtn">👤</button>
+          <div class="profile-menu hidden" id="profileMenu">
+            <div class="pm-head"><strong>Lee Sangmin</strong><span>partner@moonlight.studio</span></div>
+            <a href="#" data-page="settings"><span data-i18n="pm_account">계정 설정</span></a>
+            <a href="#" data-page="payouts"><span data-i18n="pm_payouts">정산 정보</span></a>
+            <a href="#" data-page="brand"><span data-i18n="pm_brand">브랜드 페이지</span></a>
+            <hr>
+            <a href="#" id="pmLogout"><span data-i18n="nav_logout">로그아웃</span></a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Notification Drawer -->
+    <div class="notif-drawer hidden" id="notifDrawer">
+      <h4 data-i18n="notif_title">알림</h4>
+      <div class="notif-list" id="notifList"></div>
+    </div>
+
+    <!-- PAGE CONTAINER -->
+    <main class="page" id="page"></main>
+  </div>
+</div>
+
+<!-- ============ MODALS ============ -->
+
+<!-- Upload wizard -->
+<div class="modal-backdrop hidden" id="uploadModal">
+  <div class="modal upload-modal">
+    <button class="close" onclick="closeModal('uploadModal')">×</button>
+    <div class="up-stepper" id="upStepper"></div>
+    <div class="up-body" id="upBody"></div>
+  </div>
+</div>
+
+<!-- Detail modal -->
+<div class="modal-backdrop hidden" id="detailModal">
+  <div class="modal detail-modal">
+    <button class="close" onclick="closeModal('detailModal')">×</button>
+    <div id="detailBody"></div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast hidden" id="toast"></div>
+
+<script src="partner-data.js"></script>
+<script src="partner-app.js"></script>
+</body>
+</html>
