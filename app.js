@@ -136,7 +136,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ============ ROUTING ============
+const LOGIN_REQUIRED_VIEWS = new Set(["library", "share"]);
+
 function showView(name) {
+  if (LOGIN_REQUIRED_VIEWS.has(name) && !isLoggedIn) {
+    window._pendingRoute = name;
+    openAuth("login");
+    toast(LANG === "ko" ? "로그인 후 이용할 수 있습니다." : "Please sign in to continue.");
+    return;
+  }
+
   currentView = name;
   document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
   const target = document.getElementById("view-" + name);
@@ -251,7 +260,7 @@ function renderReviewsPreview() {
     const link = b.heavenlyUrl
       ? `<a href="${b.heavenlyUrl}" target="_blank" rel="noopener noreferrer">heavenly.tv</a>`
       : "";
-    document.getElementById("reviewsPreview").innerHTML = `<div class="empty">${LANG === "ko" ? "이 작품의 리뷰는 헤븐리에서 확인할 수 있습니다." : "Read reviews for this title on Heavenly."} ${link}</div>`;
+    document.getElementById("reviewsPreview").innerHTML = `<div class="empty">${LANG === "ko" ? "이 작품의 리뷰는 아래 링크에서 확인할 수 있습니다." : "Read reviews for this title via the link below."} ${link}</div>`;
     return;
   }
   document.getElementById("reviewsPreview").innerHTML = REVIEWS.slice(0, 4).map(r => reviewCardHTML(r)).join("");
@@ -611,10 +620,15 @@ function doLogin() {
   if (window._pendingWatch) {
     window._pendingWatch = false;
     setTimeout(openWatchFlow, 500);
+  } else if (window._pendingRoute) {
+    const next = window._pendingRoute;
+    window._pendingRoute = null;
+    setTimeout(() => showView(next), 100);
   }
 }
 
 function doLogout() {
+  window._pendingRoute = null;
   isLoggedIn = false;
   document.getElementById("btnLogin").classList.remove("hidden");
   document.getElementById("btnSignup").classList.remove("hidden");
@@ -771,7 +785,10 @@ function processPay() {
 
 // ============ MODALS / DETAIL ============
 function openModal(id) { document.getElementById(id).classList.remove("hidden"); }
-function closeModal(id) { document.getElementById(id).classList.add("hidden"); }
+function closeModal(id) {
+  document.getElementById(id).classList.add("hidden");
+  if (id === "authModal" && !isLoggedIn) window._pendingRoute = null;
+}
 
 function openTrailer() {
   const b = getDetailBundle();
@@ -922,14 +939,20 @@ function renderProfileTab(tab) {
         <div class="device-row"><div class="device-info"><strong>${n}</strong><span>${l} · ${t}</span></div>
         ${i===0?`<span class="badge-current">${LANG==="ko"?"현재":"Current"}</span>`:`<button class="btn-outline">${LANG==="ko"?"로그아웃":"Sign out"}</button>`}</div>`).join("")}</div>`;
   } else if (tab === "help") {
-    html += `<div class="faq-list">
-      <details><summary>${LANG==="ko"?"환불은 어떻게 받나요?":"How do I get a refund?"}</summary><p>${LANG==="ko"?"콘텐츠를 시청하지 않은 경우 결제 후 7일 이내 환불 가능합니다.":"Within 7 days of purchase if not watched."}</p></details>
-      <details><summary>${LANG==="ko"?"포인트 유효기간이 있나요?":"Do points expire?"}</summary><p>${LANG==="ko"?"적립일로부터 12개월 후 만료됩니다.":"Points expire 12 months after earning."}</p></details>
-      <details><summary>${LANG==="ko"?"동시에 몇 대까지 시청 가능한가요?":"How many concurrent streams?"}</summary><p>${LANG==="ko"?"기본 멤버십 기준 4대까지 동시 시청 가능합니다.":"Up to 4 concurrent streams."}</p></details>
-      <details><summary>${LANG==="ko"?"자막 언어는 몇 개 지원하나요?":"How many subtitle languages?"}</summary><p>${LANG==="ko"?"콘텐츠별로 최대 30개 언어를 지원합니다.":"Up to 30 languages per title."}</p></details>
-      <details><summary>${LANG==="ko"?"파트너로 참여하려면?":"How to become a partner?"}</summary><p>${LANG==="ko"?"하단 '파트너 신청' 메뉴에서 신청해주세요.":"Apply via 'Become a Partner' in the footer."}</p></details>
-    </div>
-    <button class="btn-primary">${LANG==="ko"?"📧 1:1 문의하기":"📧 Contact Support"}</button>`;
+    const fq = HELP_CENTER_FAQ;
+    const notion = HELP_FAQ_NOTION_URL;
+    html += `
+      <div class="form-card">
+        <p class="help-faq-intro">${tx(fq.intro)}</p>
+        <a class="btn-primary help-faq-notion-btn" href="${notion}" target="_blank" rel="noopener noreferrer">${tx(fq.linkLabel)}</a>
+      </div>
+      <h2 class="help-faq-h2">${tx(fq.summaryHeading)}</h2>
+      <div class="faq-list">
+        ${fq.items.map(it => `
+          <details><summary>${tx(it.q)}</summary><p>${tx(it.a)}</p></details>`).join("")}
+      </div>
+      <p class="help-faq-foot muted">${tx(fq.footerNote)} <a href="${notion}" target="_blank" rel="noopener noreferrer">${tx(fq.linkLabel)}</a></p>
+      <a class="btn-primary" href="mailto:heavenly_cs@heavenly.tv">${LANG === "ko" ? "📧 1:1 문의하기 (heavenly_cs@heavenly.tv)" : "📧 Email support (heavenly_cs@heavenly.tv)"}</a>`;
   }
 
   main.innerHTML = html;

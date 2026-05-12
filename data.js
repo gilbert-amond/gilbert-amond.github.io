@@ -196,7 +196,7 @@ const DETAIL_BUNDLES = {
       rating: "4.4",
       reviewCount: "—",
       ageLabel: { ko: "15세 이상", en: "Age 15+" },
-      subsLabel: { ko: "자막 · 헤븐리 기준", en: "Subtitles · per Heavenly" }
+      subsLabel: { ko: "자막 · 헬로라이브 기준", en: "Subtitles · per Hellolive" }
     },
     scenes: [
       { title: { ko: "EP.1 전학과 첫 만남", en: "EP.1 Transfer & first meeting" }, time: "31:34 · PG15", color: "linear-gradient(135deg,#1e3a5c,#4a7ab0)" },
@@ -216,6 +216,74 @@ const DETAIL_BUNDLES = {
     reviews: [],
     ratingDist: [0, 0, 0, 0, 0]
   }
+};
+
+// 마이페이지 고객센터 FAQ — 전체·상세는 Notion 공식 문서 참조
+// https://golden-icecream-4f0.notion.site/FAQ-17bdd33f8dbc80b5a607f57b8644ca97
+const HELP_FAQ_NOTION_URL = "https://golden-icecream-4f0.notion.site/FAQ-17bdd33f8dbc80b5a607f57b8644ca97";
+
+const HELP_CENTER_FAQ = {
+  linkLabel: { ko: "공식 FAQ 전체 보기 (Notion)", en: "Open full FAQ (Notion)" },
+  intro: {
+    ko: "자주 묻는 질문의 전체·최신 내용은 아래 공식 FAQ 페이지에서 확인하실 수 있습니다. 아래 항목은 앱·웹에서 빠르게 참고하실 수 있도록 요약한 것이며, 세부 조건·예외는 공식 FAQ를 기준으로 합니다.",
+    en: "For the complete, up-to-date FAQ, use the official Notion page below. The collapsible items here are a short on-site summary; details and exceptions follow the official FAQ."
+  },
+  summaryHeading: { ko: "자주 묻는 질문 (요약)", en: "FAQ (summary)" },
+  footerNote: {
+    ko: "위 요약에 없는 내용은 공식 FAQ에서 검색하거나 고객센터로 문의해 주세요.",
+    en: "If your question is not covered above, check the full FAQ or contact support."
+  },
+  items: [
+    {
+      q: { ko: "환불은 어떻게 신청하나요?", en: "How do I request a refund?" },
+      a: {
+        ko: "디지털 콘텐츠 특성상 시청 여부·이용 시작 시점 등에 따라 환불이 제한될 수 있습니다. 구체적인 기준·절차는 공식 FAQ의 환불 안내를 확인해 주시고, 신청 시에는 주문번호·가입 이메일과 함께 고객센터로 문의해 주세요.",
+        en: "Refunds may be limited depending on whether playback has started and other digital-content rules. See the official FAQ for criteria and steps, and email support with your order number and account email."
+      }
+    },
+    {
+      q: { ko: "결제 내역은 어디서 확인하나요?", en: "Where can I see my payment history?" },
+      a: {
+        ko: "로그인 후 마이페이지의 구매 내역·이용내역(또는 계정·결제 메뉴)에서 확인하실 수 있습니다. 자세한 항목명은 공식 FAQ를 참고해 주세요.",
+        en: "After signing in, check Purchases or billing history in My Page. Exact menu names may vary—see the official FAQ."
+      }
+    },
+    {
+      q: { ko: "정기 결제(멤버십) 해지는 어떻게 하나요?", en: "How do I cancel a subscription?" },
+      a: {
+        ko: "마이페이지의 멤버십·결제 관련 메뉴에서 해지 신청이 가능합니다. 해지 시점·환불 가능 여부는 이용 중인 상품 및 공식 FAQ 기준을 따릅니다.",
+        en: "Cancel from the membership or billing section in My Page. Effective date and refunds depend on your plan and the official FAQ."
+      }
+    },
+    {
+      q: { ko: "동시에 몇 대까지 시청할 수 있나요?", en: "How many devices can stream at once?" },
+      a: {
+        ko: "이용 중인 요금제·멤버십에 따라 동시 시청 가능 기기 수가 다를 수 있습니다. 기본 안내는 공식 FAQ의 시청·기기 관련 항목을 확인해 주세요.",
+        en: "Concurrent streams depend on your plan. See the official FAQ for device and streaming limits."
+      }
+    },
+    {
+      q: { ko: "자막·화질·지원 환경은 어떻게 되나요?", en: "What about subtitles, quality, and supported devices?" },
+      a: {
+        ko: "작품별로 제공 자막 언어·화질·지원 플랫폼(웹·앱 등)이 다를 수 있습니다. 지원 OS·브라우저·앱 버전은 공식 FAQ의 이용 환경 안내를 참고해 주세요.",
+        en: "Subtitles, quality, and supported platforms vary by title. See the official FAQ for OS, browser, and app requirements."
+      }
+    },
+    {
+      q: { ko: "로그인·계정(이메일·소셜) 문제가 있어요.", en: "I have login or account issues." },
+      a: {
+        ko: "동일 서비스라도 로그인 수단(이메일·소셜)별로 계정이 분리될 수 있습니다. 비밀번호 찾기·이메일 인증 등은 공식 FAQ의 계정 항목을 확인해 주시고, 해결이 어려우면 고객센터로 연락해 주세요.",
+        en: "Email and social logins may be separate accounts. Use the official FAQ for password reset and verification; contact support if you are still stuck."
+      }
+    },
+    {
+      q: { ko: "제휴·입점·사업 제안은 어디로 보내나요?", en: "Where do I send partnership or business proposals?" },
+      a: {
+        ko: "제휴·콘텐츠 제안은 안내된 제휴 문의 채널(이메일 등)을 이용해 주세요. 자세한 제출 양식은 공식 FAQ 또는 회사 안내 페이지를 참고해 주세요.",
+        en: "Use the partnership or content inquiry email listed in our help materials. The official FAQ may include forms or guidelines."
+      }
+    }
+  ]
 };
 
 const GENRES = [
