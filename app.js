@@ -3,6 +3,17 @@ let LANG = "ko";
 let isLoggedIn = false;
 let myPoints = 84200;
 let currentView = "detail";
+let activeDetailKey = "main";
+
+function getDetailBundle() {
+  return DETAIL_BUNDLES[activeDetailKey] || DETAIL_BUNDLES.main;
+}
+
+function selectExploreDetail(key) {
+  activeDetailKey = key in DETAIL_BUNDLES ? key : "main";
+  applyI18n();
+  showView("detail");
+}
 let watchStep = 1;
 let selectedProduct = null;
 let selectedPay = null;
@@ -143,14 +154,38 @@ function showView(name) {
 
 // ============ HERO / DETAIL ============
 function renderHero() {
-  document.getElementById("heroBg").style.background = CONTENT.heroImage;
-  document.getElementById("heroTitle").textContent = tx(CONTENT.title);
-  document.getElementById("heroDesc").textContent = t("hero_desc");
-  document.getElementById("synopsis").textContent = t("synopsis");
+  const b = getDetailBundle();
+  document.getElementById("heroBg").style.background = b.content.heroImage;
+  document.getElementById("heroTitle").textContent = tx(b.content.title);
+  const metaEl = document.getElementById("heroMeta");
+  if (b.useI18nHero) {
+    document.getElementById("heroDesc").textContent = t("hero_desc");
+    document.getElementById("synopsis").textContent = t("synopsis");
+    if (metaEl) {
+      metaEl.innerHTML = `<span class="rating">★ 4.9</span><span>·</span><span><span data-i18n="reviews_n">${t("reviews_n")}</span> 164</span><span>·</span><span data-i18n="age_15">${t("age_15")}</span><span>·</span><span data-i18n="lang_subs">${t("lang_subs")}</span>`;
+    }
+    const badge2 = document.querySelector(".hero-tags .badge:not(.badge-hot)");
+    if (badge2) {
+      badge2.setAttribute("data-i18n", "badge_meta");
+      badge2.textContent = t("badge_meta");
+    }
+  } else {
+    document.getElementById("heroDesc").textContent = tx(b.heroDesc);
+    document.getElementById("synopsis").textContent = tx(b.synopsis);
+    if (metaEl) {
+      metaEl.innerHTML = `<span class="rating">★ ${b.heroMeta.rating}</span><span>·</span><span>${t("reviews_n")} ${b.heroMeta.reviewCount}</span><span>·</span><span>${tx(b.heroMeta.ageLabel)}</span><span>·</span><span>${tx(b.heroMeta.subsLabel)}</span>`;
+    }
+    const badge2 = document.querySelector(".hero-tags .badge:not(.badge-hot)");
+    if (badge2) {
+      badge2.removeAttribute("data-i18n");
+      badge2.textContent = tx(b.badgeMeta);
+    }
+  }
 }
 
 function renderScenes() {
-  document.getElementById("scenesGrid").innerHTML = SCENES.map((s, i) => `
+  const scenes = getDetailBundle().scenes;
+  document.getElementById("scenesGrid").innerHTML = scenes.map((s, i) => `
     <div class="scene-card" style="background:${s.color}" data-idx="${i}">
       <div class="scene-play">▶</div>
       <div class="scene-info">
@@ -159,7 +194,7 @@ function renderScenes() {
       </div>
     </div>`).join("");
   document.querySelectorAll("#scenesGrid .scene-card").forEach(c =>
-    c.addEventListener("click", () => openModal("trailerModal")));
+    c.addEventListener("click", () => openTrailer()));
 }
 
 function renderSafeLatest() {
@@ -191,6 +226,7 @@ function renderSafeLatest() {
 }
 
 function renderQuotes() {
+  const QUOTES = getDetailBundle().quotes;
   document.getElementById("quotes").innerHTML = QUOTES.map(q => `
     <blockquote class="quote">
       <p>"${tx(q.text)}"</p>
@@ -199,6 +235,7 @@ function renderQuotes() {
 }
 
 function renderCast() {
+  const CAST = getDetailBundle().cast;
   document.getElementById("castRow").innerHTML = CAST.map(c => `
     <div class="cast-item">
       <div class="cast-avatar">${c.emoji}</div>
@@ -208,6 +245,15 @@ function renderCast() {
 }
 
 function renderReviewsPreview() {
+  const REVIEWS = getDetailBundle().reviews;
+  const b = getDetailBundle();
+  if (!REVIEWS.length) {
+    const link = b.heavenlyUrl
+      ? `<a href="${b.heavenlyUrl}" target="_blank" rel="noopener noreferrer">heavenly.tv</a>`
+      : "";
+    document.getElementById("reviewsPreview").innerHTML = `<div class="empty">${LANG === "ko" ? "이 작품의 리뷰는 헤븐리에서 확인할 수 있습니다." : "Read reviews for this title on Heavenly."} ${link}</div>`;
+    return;
+  }
   document.getElementById("reviewsPreview").innerHTML = REVIEWS.slice(0, 4).map(r => reviewCardHTML(r)).join("");
   bindReviewClicks("#reviewsPreview");
 }
@@ -277,7 +323,7 @@ function renderExplore() {
 function filterExplore(genre) {
   const list = genre === "All" ? EXPLORE_CONTENT : EXPLORE_CONTENT.filter(c => tx(c.genre) === genre);
   document.getElementById("exploreGrid").innerHTML = list.map(c => `
-    <div class="grid-card" onclick="goToContent()">
+    <div class="grid-card" onclick="selectExploreDetail('${c.detailKey || "main"}')">
       <div class="grid-thumb" style="${c.poster ? `background-image:url('${c.poster}'); background-size:cover; background-position:center;` : `background:${c.color}` }">
         <div class="related-rating">★ ${c.rating}</div>
       </div>
@@ -286,7 +332,7 @@ function filterExplore(genre) {
     </div>`).join("");
 }
 
-function goToContent() { showView("detail"); }
+function goToContent() { selectExploreDetail("main"); }
 
 // ============ TRENDING ============
 function renderTrending(period) {
@@ -294,7 +340,7 @@ function renderTrending(period) {
     b.classList.toggle("active", b.dataset.trending === period));
   const items = EXPLORE_CONTENT.slice(0, 10);
   document.getElementById("rankList").innerHTML = items.map((c, i) => `
-    <div class="rank-item" onclick="goToContent()">
+    <div class="rank-item" onclick="selectExploreDetail('main')">
       <div class="rank-num">${i+1}</div>
       <div class="rank-thumb" style="background:${c.color}"></div>
       <div class="rank-info">
@@ -362,7 +408,12 @@ function renderLibrary(tab) {
 
 // ============ REVIEWS PAGE ============
 function renderRatingBars() {
+  const RATING_DIST = getDetailBundle().ratingDist;
   const total = RATING_DIST.reduce((a,b)=>a+b,0);
+  if (!total) {
+    document.getElementById("ratingBars").innerHTML = `<div class="empty">${LANG === "ko" ? "표시할 평점 분포가 없습니다." : "No rating distribution to show."}</div>`;
+    return;
+  }
   document.getElementById("ratingBars").innerHTML = RATING_DIST.map((n, i) => {
     const star = 5 - i;
     const pct = (n / total * 100).toFixed(1);
@@ -378,7 +429,7 @@ function renderReviewsFeed() {
   const tab = document.querySelector(".rv-tab.active")?.dataset.rvTab || "all";
   const sort = document.getElementById("rvSort")?.value || "like";
   const search = (document.getElementById("rvSearch")?.value || "").toLowerCase();
-  let list = REVIEWS.slice();
+  let list = getDetailBundle().reviews.slice();
   if (tab === "photo") list = list.filter(r => r.photo);
   if (tab === "spoiler") list = list.filter(r => !r.spoiler);
   if (tab === "verified") list = list.filter(r => r.verified);
@@ -642,7 +693,7 @@ function renderWatchStep() {
       <h2 class="ws-title">${LANG==="ko"?"결제수단을 선택하세요":"Select payment method"}</h2>
       <div class="order-summary">
         <div>
-          <div class="os-title">${tx(CONTENT.title)}</div>
+          <div class="os-title">${tx(getDetailBundle().content.title)}</div>
           <div class="os-sub">${p.quality} · ${p.days === -1 ? (LANG==="ko"?"영구 소장":"Own") : p.days + (LANG==="ko"?"일":"d")} · ${p.res}</div>
         </div>
         <div class="os-price">₩${p.price.toLocaleString()}</div>
@@ -692,7 +743,7 @@ function renderWatchStep() {
         <h2>${LANG==="ko"?"결제가 완료되었습니다!":"Payment complete!"}</h2>
         <p>${LANG==="ko"?"바로 시청을 시작할 수 있습니다.":"Start watching right now."}</p>
         <div class="receipt">
-          <div><span>${LANG==="ko"?"콘텐츠":"Title"}</span><span>${tx(CONTENT.title)}</span></div>
+          <div><span>${LANG==="ko"?"콘텐츠":"Title"}</span><span>${tx(getDetailBundle().content.title)}</span></div>
           <div><span>${LANG==="ko"?"상품":"Plan"}</span><span>${p.quality} · ${p.days === -1 ? (LANG==="ko"?"영구 소장":"Own") : p.days + (LANG==="ko"?"일":"d")}</span></div>
           <div><span>${LANG==="ko"?"결제수단":"Method"}</span><span>${tx(selectedPay.name)}</span></div>
           <div><span>${LANG==="ko"?"결제금액":"Amount"}</span><strong>₩${p.price.toLocaleString()}</strong></div>
@@ -722,8 +773,19 @@ function processPay() {
 function openModal(id) { document.getElementById(id).classList.remove("hidden"); }
 function closeModal(id) { document.getElementById(id).classList.add("hidden"); }
 
+function openTrailer() {
+  const b = getDetailBundle();
+  if (b.trailerYoutubeId) {
+    window.open(`https://www.youtube.com/watch?v=${b.trailerYoutubeId}`, "_blank", "noopener,noreferrer");
+    return;
+  }
+  const titleEl = document.querySelector("#trailerModal .player-title");
+  if (titleEl) titleEl.textContent = t("trailer_title");
+  openModal("trailerModal");
+}
+
 function openReviewerProfile(user) {
-  const r = REVIEWS.find(x => x.user === user);
+  const r = getDetailBundle().reviews.find(x => x.user === user);
   if (!r) return;
   document.getElementById("detailBody").innerHTML = `
     <div class="profile-head">
@@ -896,7 +958,7 @@ function bindGlobal() {
   // Watch
   document.getElementById("btnWatch").addEventListener("click", tryWatch);
   document.getElementById("btnWatch2").addEventListener("click", tryWatch);
-  document.getElementById("btnTrailer").addEventListener("click", () => openModal("trailerModal"));
+  document.getElementById("btnTrailer").addEventListener("click", () => openTrailer());
 
   // Share
   document.getElementById("btnSharePage").addEventListener("click", () => showView("share"));
@@ -959,7 +1021,7 @@ document.getElementById("profileMenu").classList.toggle("hidden");
     if (v === "rating") list.sort((a,b)=>b.rating-a.rating);
     if (v === "latest") list.sort((a,b)=>b.year-a.year);
     document.getElementById("exploreGrid").innerHTML = list.map(c => `
-      <div class="grid-card" onclick="goToContent()">
+      <div class="grid-card" onclick="selectExploreDetail('${c.detailKey || "main"}')">
         <div class="grid-thumb" style="${c.poster ? `background-image:url('${c.poster}'); background-size:cover; background-position:center;` : `background:${c.color}` }"><div class="related-rating">★ ${c.rating}</div></div>
         <div class="grid-title">${tx(c.title)}</div>
         <div class="grid-meta">${tx(c.genre)} · ${c.year}</div>

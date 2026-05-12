@@ -155,8 +155,68 @@ const EXPLORE_CONTENT = [
   { title: { ko: "네 원수를 잊지 마라", en: "Don't Forget Your Enemy" }, genre: { ko: "BL 코미디", en: "BL Comedy" }, rating: 4.4, year: 2026, color: "linear-gradient(135deg,#1a1a5e,#3a3aa8)", poster: "https://image.heavenly.tv/content/ko/9042791802891554916-20260504042825.jpg" },
   { title: { ko: "가장 실패 없는 작품만 모았다!", en: "Can't-miss Collection" }, genre: { ko: "큐레이션", en: "Curation" }, rating: 4.3, year: 2026, color: "linear-gradient(135deg,#1a1a1a,#3a3a3a)", poster: "https://image.heavenly.tv/featured/12823202599141364070-20260105064043.jpg" },
   { title: { ko: "5월 멤버십 라인업", en: "May Membership Lineup" }, genre: { ko: "멤버십", en: "Membership" }, rating: 4.2, year: 2026, color: "linear-gradient(135deg,#5e5a1a,#a89a3a)", poster: "https://image.heavenly.tv/featured/4139756345323049580-20260506004607.jpg" },
-  { title: { ko: "다시 얽히기 시작한 네 사람의 운명", en: "Entwined Fates" }, genre: { ko: "BL 드라마", en: "BL Drama" }, rating: 4.4, year: 2026, color: "linear-gradient(135deg,#3a5a7a,#7aa8c8)", poster: "https://image.heavenly.tv/featured/4587989101066010264-20260508052529.jpg" }
+  { title: { ko: "다시 얽히기 시작한 네 사람의 운명", en: "Entwined Fates" }, genre: { ko: "BL 드라마", en: "BL Drama" }, rating: 4.4, year: 2023, color: "linear-gradient(135deg,#2a4a6a,#5a8ab8)", poster: "https://image.heavenly.tv/content/15265885584634743693-20231124070959.png", detailKey: "heavenly-492" }
 ];
+
+// Rating distribution (5,4,3,2,1) — DETAIL_BUNDLES보다 먼저 선언해야 함 (TDZ 오류 방지)
+const RATING_DIST = [120, 30, 9, 3, 2];
+
+// Detail page presets (탐색 카드의 detailKey와 연결). heavenly-492 = https://heavenly.tv/detail/492 메타 기준
+const DETAIL_BUNDLES = {
+  main: {
+    useI18nHero: true,
+    content: CONTENT,
+    scenes: SCENES,
+    quotes: QUOTES,
+    cast: CAST,
+    reviews: REVIEWS,
+    ratingDist: RATING_DIST,
+    trailerYoutubeId: null,
+    heavenlyUrl: null
+  },
+  "heavenly-492": {
+    useI18nHero: false,
+    heavenlyUrl: "https://heavenly.tv/detail/492",
+    trailerYoutubeId: "JUu6oQvnzQY",
+    heroDesc: {
+      ko: "재혼 가정에서 형제가 된 우비와 쑤위. 엄마가 남긴 조각상을 닮은 소년과 마주치며, 서로의 결핍을 채워 가는 청춘 로맨스.",
+      en: "Wubi and Xu Wei become stepbrothers; drawn to the boy who resembles his late mother's sculpture, they slowly fill each other's gaps."
+    },
+    synopsis: {
+      ko: "우비는 아빠가 새엄마의 아들을 자신과 같은 학교로 보낸다는 말을 듣고 아빠 몰래 전학 수속을 밟는다. 전학을 간 학교에서 우비는 세상을 떠난 엄마가 마지막으로 만든 소년 조각상과 닮은 쑤위를 만나고, 엄마가 생전에 좋아했던 노래를 부르는 쑤위에게 자꾸만 눈길이 간다. 재혼 가정의 형제가 된 쑤위와 우비. 둘은 서로의 결핍을 채워주며 조금씩 가까워지는데…",
+      en: "Hearing his father plans to send his stepmother's son to the same school, Wubi transfers in secret. At the new school he meets Xu Wei, who resembles the boy sculpture his late mother created last, and keeps noticing Xu Wei singing a song his mother loved. As stepbrothers in a blended family, they slowly grow closer, filling each other's gaps…"
+    },
+    content: {
+      id: "heavenly-492",
+      title: { ko: "가가니별포 : 네가 어디 있든", en: "Stay With Me" },
+      heroImage: "url('https://image.heavenly.tv/content/6313374596550015593-20230704090626.jpg') center/cover no-repeat"
+    },
+    badgeMeta: { ko: "2023 · BL 드라마 · 24부작", en: "2023 · BL Drama · 24 eps" },
+    heroMeta: {
+      rating: "4.4",
+      reviewCount: "—",
+      ageLabel: { ko: "15세 이상", en: "Age 15+" },
+      subsLabel: { ko: "자막 · 헤븐리 기준", en: "Subtitles · per Heavenly" }
+    },
+    scenes: [
+      { title: { ko: "EP.1 전학과 첫 만남", en: "EP.1 Transfer & first meeting" }, time: "31:34 · PG15", color: "linear-gradient(135deg,#1e3a5c,#4a7ab0)" },
+      { title: { ko: "EP.2 티격태격 형제", en: "EP.2 Bickering brothers" }, time: "33:57 · PG15", color: "linear-gradient(135deg,#3a2a4e,#6a4a8e)" },
+      { title: { ko: "EP.3 거리 좁히기", en: "EP.3 Closing the distance" }, time: "33:13 · PG15", color: "linear-gradient(135deg,#2a4a3e,#4a8a6e)" },
+      { title: { ko: "EP.4 보호와 오해", en: "EP.4 Protection & misunderstanding" }, time: "34:26 · PG15", color: "linear-gradient(135deg,#4a2a2a,#8a4a4a)" }
+    ],
+    quotes: [
+      { text: { ko: "네가 어디에 있든, 시선이 닿는 곳에 네가 있어.", en: "Wherever you are, you're where my eyes land." }, who: { ko: "우비", en: "Wubi" } },
+      { text: { ko: "서로의 빈자리를 메우다 보면, 어느새 하나의 이야기가 된다.", en: "Fill each other's gaps long enough, and you become one story." }, who: { ko: "쑤위", en: "Xu Wei" } }
+    ],
+    cast: [
+      { name: { ko: "장형민", en: "Jang Hyung-min" }, role: { ko: "출연", en: "Cast" }, emoji: "🎭" },
+      { name: { ko: "서빈", en: "Seo Bin" }, role: { ko: "출연", en: "Cast" }, emoji: "🎭" },
+      { name: { ko: "소소신", en: "Soso Shin" }, role: { ko: "크리에이터", en: "Creator" }, emoji: "✍️" }
+    ],
+    reviews: [],
+    ratingDist: [0, 0, 0, 0, 0]
+  }
+};
 
 const GENRES = [
   { name: { ko: "로맨스", en: "Romance" }, count: 124, emoji: "💕", color: "linear-gradient(135deg,#ff3d6e,#ff8aa8)" },
@@ -222,6 +282,3 @@ const RT_TEMPLATES = [
   { ko: "🇮🇳 priya님이 당신의 링크 클릭 → +5P", en: "🇮🇳 priya clicked your link → +5P" },
   { ko: "🇹🇭 ploy님이 당신의 링크로 결제 → +990P", en: "🇹🇭 ploy purchased via your link → +990P" }
 ];
-
-// Rating distribution (5,4,3,2,1)
-const RATING_DIST = [120, 30, 9, 3, 2];
