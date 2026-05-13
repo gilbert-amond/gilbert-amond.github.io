@@ -126,7 +126,7 @@ const CAST = [
   { name: { ko: "StoryHub", en: "StoryHub" }, role: { ko: "배급", en: "Distribution" }, emoji: "🎬" }
 ];
 
-// Reviews from heavenly detail/891 API
+// Sample reviews (demo)
 const REVIEWS = [
   { user: "Sm0K5HbK85qH", country: "🇰🇷", rating: 5, photo: false, verified: false, spoiler: false, title: { ko: "재밌어요!", en: "재밌어요!" }, body: { ko: "재밌어요!", en: "재밌어요!" }, likes: 0, date: "2025.05.03" },
   { user: "f0qX9L9Hqnvy", country: "🇯🇵", rating: 5, photo: false, verified: true, spoiler: false, title: { ko: "아 진짜 못 헤어나오겠어 희수도 귀여운데 우리 …", en: "아 진짜 못 헤어나오겠어 희수도 귀여운데 우리 …" }, body: { ko: "아 진짜 못 헤어나오겠어 희수도 귀여운데 우리 햇살공 쩔쩔매는거 나 미칠거 같아. 하트스토퍼를 5번 넘게 재탕 했는데 여기는 벌써 7~10화만 세번째 돌리고 있어....내가 어쩌자고 이걸 미리 사서 봤을까....그리고 아무도 말 안하는데 당근친구야 너도 좋은 사람만날거야...", en: "아 진짜 못 헤어나오겠어 희수도 귀여운데 우리 햇살공 쩔쩔매는거 나 미칠거 같아. 하트스토퍼를 5번 넘게 재탕 했는데 여기는 벌써 7~10화만 세번째 돌리고 있어....내가 어쩌자고 이걸 미리 사서 봤을까....그리고 아무도 말 안하는데 당근친구야 너도 좋은 사람만날거야..." }, likes: 5, date: "2025.05.02" },
@@ -161,7 +161,7 @@ const EXPLORE_CONTENT = [
 // Rating distribution (5,4,3,2,1) — DETAIL_BUNDLES보다 먼저 선언해야 함 (TDZ 오류 방지)
 const RATING_DIST = [120, 30, 9, 3, 2];
 
-// Detail page presets (탐색 카드의 detailKey와 연결). heavenly-492 = https://heavenly.tv/detail/492 메타 기준
+// Detail page presets (탐색 카드의 detailKey와 연결)
 const DETAIL_BUNDLES = {
   main: {
     useI18nHero: true,
@@ -171,12 +171,10 @@ const DETAIL_BUNDLES = {
     cast: CAST,
     reviews: REVIEWS,
     ratingDist: RATING_DIST,
-    trailerYoutubeId: null,
-    heavenlyUrl: null
+    trailerYoutubeId: null
   },
   "heavenly-492": {
     useI18nHero: false,
-    heavenlyUrl: "https://heavenly.tv/detail/492",
     trailerYoutubeId: "JUu6oQvnzQY",
     heroDesc: {
       ko: "재혼 가정에서 형제가 된 우비와 쑤위. 엄마가 남긴 조각상을 닮은 소년과 마주치며, 서로의 결핍을 채워 가는 청춘 로맨스.",

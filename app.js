@@ -216,8 +216,8 @@ function renderSafeLatest() {
   if (!list.length) {
     grid.innerHTML = `<div class="safe-empty">${
       LANG === "ko"
-        ? "heavenly.tv 기준 최신 데이터는 모두 19세 이상(PG18)으로 확인되어 현재 표시 가능한 항목이 없습니다."
-        : "All latest items from heavenly.tv are marked as PG18, so no eligible items are currently available."
+        ? "최신 카탈로그 항목은 모두 19세 이상(PG18)으로 확인되어 현재 표시 가능한 항목이 없습니다."
+        : "All latest catalog items are rated PG18, so no eligible items are currently available."
     }</div>`;
     return;
   }
@@ -255,12 +255,12 @@ function renderCast() {
 
 function renderReviewsPreview() {
   const REVIEWS = getDetailBundle().reviews;
-  const b = getDetailBundle();
   if (!REVIEWS.length) {
-    const link = b.heavenlyUrl
-      ? `<a href="${b.heavenlyUrl}" target="_blank" rel="noopener noreferrer">heavenly.tv</a>`
-      : "";
-    document.getElementById("reviewsPreview").innerHTML = `<div class="empty">${LANG === "ko" ? "이 작품의 리뷰는 아래 링크에서 확인할 수 있습니다." : "Read reviews for this title via the link below."} ${link}</div>`;
+    document.getElementById("reviewsPreview").innerHTML = `<div class="empty">${
+      LANG === "ko"
+        ? "이 작품의 리뷰는 앱에서 확인하시거나 고객센터(cs@hellolive.tv)로 문의해 주세요."
+        : "View reviews in the app or contact cs@hellolive.tv."
+    }</div>`;
     return;
   }
   document.getElementById("reviewsPreview").innerHTML = REVIEWS.slice(0, 4).map(r => reviewCardHTML(r)).join("");
@@ -952,7 +952,7 @@ function renderProfileTab(tab) {
           <details><summary>${tx(it.q)}</summary><p>${tx(it.a)}</p></details>`).join("")}
       </div>
       <p class="help-faq-foot muted">${tx(fq.footerNote)} <a href="${notion}" target="_blank" rel="noopener noreferrer">${tx(fq.linkLabel)}</a></p>
-      <a class="btn-primary" href="mailto:heavenly_cs@heavenly.tv">${LANG === "ko" ? "📧 1:1 문의하기 (heavenly_cs@heavenly.tv)" : "📧 Email support (heavenly_cs@heavenly.tv)"}</a>`;
+      <a class="btn-primary" href="mailto:cs@hellolive.tv">${LANG === "ko" ? "📧 1:1 문의하기 (cs@hellolive.tv)" : "📧 Email support (cs@hellolive.tv)"}</a>`;
   }
 
   main.innerHTML = html;
