@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StoryHub Admin Console</title>
+<title>MyPick Admin Console</title>
 <link rel="stylesheet" href="admin-styles.css">
 </head>
 <body>
@@ -11,11 +11,11 @@
 <!-- ============ LOGIN ============ -->
 <div id="loginOverlay" class="login-overlay">
   <div class="login-box">
-    <div class="login-brand">▶ StoryHub <span class="ad">Admin</span></div>
+    <div class="login-brand">▶ MyPick <span class="ad">Admin</span></div>
     <h1 data-i18n="login_title">관리자 로그인</h1>
     <p data-i18n="login_sub">플랫폼 운영 콘솔</p>
     <div class="login-body">
-      <input type="email" placeholder="admin@storyhub.app">
+      <input type="email" placeholder="admin@mypick.app">
       <input type="password" placeholder="••••••••">
       <input type="text" placeholder="2FA Code (000000)">
       <button class="btn-primary full" onclick="enterAdmin()" data-i18n="btn_login">로그인</button>
@@ -32,7 +32,7 @@
 <div id="console" class="console hidden">
 
   <aside class="sidebar">
-    <div class="sb-brand">▶ <span>StoryHub</span><em>Admin Console</em></div>
+    <div class="sb-brand">▶ <span>MyPick</span><em>Admin Console</em></div>
     <div class="sb-user">
       <div class="sb-user-av">A</div>
       <div>
@@ -83,7 +83,7 @@
         <div class="profile-wrap">
           <button class="avatar" id="avatarBtn">A</button>
           <div class="profile-menu hidden" id="profileMenu">
-            <div class="pm-head"><strong>Park Jaehyun</strong><span>admin@storyhub.app</span><div class="role-tag">Super Admin</div></div>
+            <div class="pm-head"><strong>Park Jaehyun</strong><span>admin@mypick.app</span><div class="role-tag">Super Admin</div></div>
             <a href="#" data-page="system"><span data-i18n="pm_account">계정 / 권한</span></a>
             <a href="#" data-page="system"><span data-i18n="pm_audit">감사 로그</span></a>
             <hr>

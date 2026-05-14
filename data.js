@@ -123,7 +123,7 @@ const CAST = [
   { name: { ko: "김도연", en: "Kim Do-yeon" }, role: { ko: "지유 役", en: "as Ji-yu" }, emoji: "👧" },
   { name: { ko: "이상준", en: "Lee Sang-jun" }, role: { ko: "승원 役", en: "as Seung-won" }, emoji: "👨" },
   { name: { ko: "박경민", en: "Park Kyung-min" }, role: { ko: "원작", en: "Creator" }, emoji: "✍️" },
-  { name: { ko: "StoryHub", en: "StoryHub" }, role: { ko: "배급", en: "Distribution" }, emoji: "🎬" }
+  { name: { ko: "MyPick", en: "MyPick" }, role: { ko: "배급", en: "Distribution" }, emoji: "🎬" }
 ];
 
 // Sample reviews (demo)

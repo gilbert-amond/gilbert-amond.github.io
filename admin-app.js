@@ -831,8 +831,8 @@ function renderSysTab(tab){
   }
   if(tab==='admins'){
     const admins = LANG==='ko'
-      ? [["Park Jaehyun","admin@storyhub.app","Super Admin","활성"],["Kim Soyeon","kim@storyhub.app","검수 매니저","활성"],["Lee Hyunwoo","lee@storyhub.app","정산 매니저","활성"],["Choi Jiwon","jiwon@storyhub.app","CS 매니저","비활성"]]
-      : [["Park Jaehyun","admin@storyhub.app","Super Admin","Active"],["Kim Soyeon","kim@storyhub.app","Review Mgr","Active"],["Lee Hyunwoo","lee@storyhub.app","Settle Mgr","Active"],["Choi Jiwon","jiwon@storyhub.app","CS Mgr","Inactive"]];
+      ? [["Park Jaehyun","admin@mypick.app","Super Admin","활성"],["Kim Soyeon","kim@mypick.app","검수 매니저","활성"],["Lee Hyunwoo","lee@mypick.app","정산 매니저","활성"],["Choi Jiwon","jiwon@mypick.app","CS 매니저","비활성"]]
+      : [["Park Jaehyun","admin@mypick.app","Super Admin","Active"],["Kim Soyeon","kim@mypick.app","Review Mgr","Active"],["Lee Hyunwoo","lee@mypick.app","Settle Mgr","Active"],["Choi Jiwon","jiwon@mypick.app","CS Mgr","Inactive"]];
     return `<div class="card no-pad">
       <table class="data-table">
         <thead><tr><th>${LANG==='ko'?'이름':'Name'}</th><th>${LANG==='ko'?'이메일':'Email'}</th><th>${LANG==='ko'?'권한':'Role'}</th><th>${LANG==='ko'?'상태':'Status'}</th><th>${t('th_action')}</th></tr></thead>
@@ -861,9 +861,9 @@ function renderSysTab(tab){
   }
   return `<div class="card"><div class="form-card">
     <h3>${LANG==='ko'?'이용약관':'Terms of Service'}</h3>
-    <textarea rows="8">${LANG==='ko'?'본 약관은 StoryHub 서비스 이용에 관한 사항을 정합니다...':'These Terms govern your use of StoryHub...'}</textarea>
+    <textarea rows="8">${LANG==='ko'?'본 약관은 MyPick 서비스 이용에 관한 사항을 정합니다...':'These Terms govern your use of MyPick...'}</textarea>
     <h3 style="margin-top:18px">${LANG==='ko'?'개인정보처리방침':'Privacy Policy'}</h3>
-    <textarea rows="8">${LANG==='ko'?'StoryHub는 개인정보 보호법에 따라...':'StoryHub follows applicable privacy regulations...'}</textarea>
+    <textarea rows="8">${LANG==='ko'?'MyPick은 개인정보 보호법에 따라...':'MyPick follows applicable privacy regulations...'}</textarea>
     <button class="btn-primary" style="margin-top:14px">${t('save')}</button>
   </div></div>`;
 }

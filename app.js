@@ -20,8 +20,8 @@ let selectedPay = null;
 let rtInterval = null;
 let activeProfileTab = "profile";
 const TEST_ACCOUNT = {
-  email: "reviewer@storyhub.app",
-  password: "StoryHub!2026",
+  email: "reviewer@mypick.app",
+  password: "MyPick!2026",
   name: "PG Tester"
 };
 const HEAVENLY_RAW = [
@@ -636,11 +636,11 @@ function doLogout() {
   document.getElementById("profileMenu").classList.add("hidden");
   document.getElementById("pmName").textContent = "Guest User";
   const pmEmail = document.querySelector(".pm-email");
-  if (pmEmail) pmEmail.textContent = "user@storyhub.app";
+  if (pmEmail) pmEmail.textContent = "user@mypick.app";
   const sideName = document.querySelector(".ps-name");
   if (sideName) sideName.textContent = "Guest User";
   const sideEmail = document.querySelector(".ps-email");
-  if (sideEmail) sideEmail.textContent = "user@storyhub.app";
+  if (sideEmail) sideEmail.textContent = "user@mypick.app";
   showView("detail");
   toast(LANG==="ko"?"로그아웃되었습니다":"Signed out");
 }
@@ -868,7 +868,7 @@ function renderProfileTab(tab) {
     html += `
       <div class="form-card">
         <div class="form-row"><label>${LANG==="ko"?"닉네임":"Nickname"}</label><input type="text" value="Guest User"></div>
-        <div class="form-row"><label>${LANG==="ko"?"이메일":"Email"}</label><input type="email" value="user@storyhub.app" disabled></div>
+        <div class="form-row"><label>${LANG==="ko"?"이메일":"Email"}</label><input type="email" value="user@mypick.app" disabled></div>
         <div class="form-row"><label>${LANG==="ko"?"국가":"Country"}</label>
           <select><option>🇰🇷 ${LANG==="ko"?"대한민국":"Korea"}</option><option>🇺🇸 ${LANG==="ko"?"미국":"USA"}</option><option>🇯🇵 ${LANG==="ko"?"일본":"Japan"}</option></select>
         </div>

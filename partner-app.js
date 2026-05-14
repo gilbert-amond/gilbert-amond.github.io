@@ -578,7 +578,7 @@ function renderBrand() {
       <div class="card">
         <div class="card-head row">
           <h3>${LANG==='ko'?'미리보기':'Preview'}</h3>
-          <a href="#" class="muted" onclick="event.preventDefault();toast('${LANG==='ko'?'storyhub.app/@moonlight':'storyhub.app/@moonlight'}')">storyhub.app/@moonlight ↗</a>
+          <a href="#" class="muted" onclick="event.preventDefault();toast('${LANG==='ko'?'mypick.app/@moonlight':'mypick.app/@moonlight'}')">mypick.app/@moonlight ↗</a>
         </div>
         <div class="brand-preview">
           <div class="bp-cover" style="background:linear-gradient(135deg,#1a0f2e,#8b3a8a)">
@@ -800,7 +800,7 @@ function renderUpStep() {
       </div>
       <div class="agree-row">
         <label class="chk"><input type="checkbox" checked><span>${LANG==='ko'?'콘텐츠의 모든 권리를 보유하고 있음을 확인합니다':'I confirm I own all rights to this content'}</span></label>
-        <label class="chk"><input type="checkbox" checked><span>${LANG==='ko'?'StoryHub 파트너 약관에 동의합니다':'I agree to StoryHub Partner Terms'}</span></label>
+        <label class="chk"><input type="checkbox" checked><span>${LANG==='ko'?'MyPick 파트너 약관에 동의합니다':'I agree to MyPick Partner Terms'}</span></label>
       </div>
       ${upActions(true, false, true)}`;
   }

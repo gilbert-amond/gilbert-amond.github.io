@@ -165,9 +165,9 @@ const WATCH_HOURS = [3,2,1,1,1,2,4,8,12,15,18,22,28,32,38,42,48,55,72,88,95,82,5
 
 // ====== Marketing links ======
 const MK_LINKS = [
-  { content: "Moonlight With You", url: "storyhub.app/c/moonlight-with-you", clicks: 24820, orders: 4128, rev: 8240000 },
-  { content: "Where Stars Stay", url: "storyhub.app/c/where-stars-stay", clicks: 12300, orders: 1402, rev: 3120000 },
-  { content: "Summer Memory", url: "storyhub.app/c/summer-memory", clicks: 4820, orders: 380, rev: 1120000 }
+  { content: "Moonlight With You", url: "mypick.app/c/moonlight-with-you", clicks: 24820, orders: 4128, rev: 8240000 },
+  { content: "Where Stars Stay", url: "mypick.app/c/where-stars-stay", clicks: 12300, orders: 1402, rev: 3120000 },
+  { content: "Summer Memory", url: "mypick.app/c/summer-memory", clicks: 4820, orders: 380, rev: 1120000 }
 ];
 
 // ====== Payouts ======
